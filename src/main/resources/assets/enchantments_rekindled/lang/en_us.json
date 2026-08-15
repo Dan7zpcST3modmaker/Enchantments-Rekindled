@@ -1,0 +1,26 @@
+{
+  "creativetab.enchantments_rekindled.mod_items_tab": "Enchantments Rekindled",
+
+  "item.enchantments_rekindled.nycrit": "Nycrit",
+  "item.enchantments_rekindled.experience_crystal": "Experience Crystal",
+  "item.enchantments_rekindled.experiolite": "Experiolite",
+  "item.enchantments_rekindled.experience_prism": "Experience Prism",
+
+  "block.enchantments_rekindled.nycrit_block": "Nycrit Block",
+  "block.enchantments_rekindled.nycrit_ore": "Nycrit Ore",
+  "block.enchantments_rekindled.deepslate_nycrit_ore": "Deepslate Nycrit Ore",
+  "block.enchantments_rekindled.abyssal_barrier": "Abyssal Barrier",
+  "block.enchantments_rekindled.enchantments_stone": "Enchantments Stone",
+  "block.enchantments_rekindled.enchantments_pedestal": "Enchantments Pedestal",
+
+  "tooltip.enchantments_rekindled.crushable_by_hand": "§7[Shift+Right-click]§r to crush into experience",
+  "tooltip.enchantments_rekindled.nycrit_shift": "Contains §5Experience decay products§r",
+  "tooltip.enchantments_rekindled.nycrit_control": "Can be smelted into §aExperience Crystals§r",
+  "tooltip.enchantments_rekindled.experiolite": "Can hold §aExperience Stamps§r",
+  "tooltip.enchantments_rekindled.experiolite_shift": "Place it on the §aEnchantments Pedestal§r to affix an §aExperience Stamp§r",
+  "tooltip.enchantments_rekindled.pedestal": "Infuses Items with §5Magic§r",
+  "tooltip.enchantments_rekindled.pedestal_shift": "Place an §aExperiolite§r on it to affix an §aExperience Stamp§r",
+  "tooltip.enchantments_rekindled.pedestal_control": "Catalyzers summary:\n *§aDaytime§r - §e30 ticks§r faster\n *§aSculk§r Block underneath - §e30 ticks§r faster\n *§aEnchantments Stones§r in a circle around the skulk -§e 30 ticks§r faster for each (totaling at §e240 ticks§r)\n *§aBookshelfs§r around (like the ones around the enchanting table) -§e 22 ticks§r§r faster for each (§520 Bookshelfs max§r, totaling at§e 440 ticks§r)",
+  "tooltip.enchantments_rekindled.hold_shift": "Hold §7[Shift]§r for more Info",
+  "tooltip.enchantments_rekindled.hold_control": "Hold §7[Control]§r for more Info"
+}

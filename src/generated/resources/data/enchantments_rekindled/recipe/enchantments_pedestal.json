@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "P": {
+      "item": "enchantments_rekindled:experience_prism"
+    }
+  },
+  "pattern": [
+    "III",
+    "POP",
+    "OOO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enchantments_rekindled:enchantments_pedestal"
+  }
+}

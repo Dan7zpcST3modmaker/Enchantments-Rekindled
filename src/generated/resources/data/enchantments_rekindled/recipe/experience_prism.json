@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "enchantments_rekindled:experience_crystal"
+    },
+    "F": {
+      "item": "minecraft:flint"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#F#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "enchantments_rekindled:experience_prism"
+  }
+}

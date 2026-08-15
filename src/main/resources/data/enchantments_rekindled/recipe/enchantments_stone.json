@@ -1,0 +1,9 @@
+{
+  "type": "enchantments_rekindled:enchantments_pedestal",
+  "ingredient": {
+    "item": "minecraft:stone"
+  },
+  "result": {
+    "id": "enchantments_rekindled:enchantments_stone"
+  }
+}

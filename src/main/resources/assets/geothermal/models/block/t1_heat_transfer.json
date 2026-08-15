@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "geothermal:block/t1_heat_transfer"
-  }
-}

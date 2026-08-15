@@ -1,0 +1,17 @@
+{
+  "type": "enchantments_rekindled:abyss_dim",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "enchantments_rekindled:abyss",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "height": 280,
+          "block": "enchantments_rekindled:abyssal_barrier"
+        }
+      ]
+    }
+  }
+}

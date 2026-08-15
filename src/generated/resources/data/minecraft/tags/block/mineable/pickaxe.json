@@ -1,7 +1,9 @@
 {
   "values": [
-    "geothermal:t1_heat_extractor",
-    "geothermal:t1_heat_accumulator",
-    "geothermal:t1_heat_vent_horizontal"
+    "enchantments_rekindled:nycrit_block",
+    "enchantments_rekindled:nycrit_ore",
+    "enchantments_rekindled:deepslate_nycrit_ore",
+    "enchantments_rekindled:enchantments_stone",
+    "enchantments_rekindled:enchantments_pedestal"
   ]
 }
