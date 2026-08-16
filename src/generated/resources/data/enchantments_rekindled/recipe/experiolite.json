@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "enchantments_rekindled:experience_crystal"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "D#D",
+    "###",
+    "D#D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enchantments_rekindled:experiolite"
+  }
+}

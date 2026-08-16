@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nycrit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enchantments_rekindled:nycrit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enchantments_rekindled:nycrit_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nycrit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enchantments_rekindled:nycrit_block"
+    ]
+  }
+}
