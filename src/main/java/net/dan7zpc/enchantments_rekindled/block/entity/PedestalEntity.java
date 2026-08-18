@@ -2,9 +2,14 @@ package net.dan7zpc.enchantments_rekindled.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -68,6 +73,50 @@ public class PedestalEntity extends SynchronizedBlockEntity {
     }
 
     @Override
+    protected Component getDefaultName() {
+        return Component.literal("");
+    }
+
+    @Override
+    protected NonNullList<ItemStack> getItems() {
+        NonNullList<ItemStack> invItems = NonNullList.of(ItemStack.EMPTY,inventory.getStackInSlot(0));
+        return invItems;
+    }
+
+    @Override
+    protected void setItems(NonNullList<ItemStack> items) {
+        inventory.insertItem(0,
+                items.getLast()
+                ,false);
+        notifyUpdate();
+    }
+
+    @Override
+    public void setItem(int slot, ItemStack stack) {
+        inventory.insertItem(slot,stack,false);
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return inventory.getStackInSlot(0).isEmpty();
+    }
+
+    @Override
+    public boolean canPlaceItem(int slot, ItemStack stack) {
+        return this.isEmpty();
+    }
+
+    @Override
+    public boolean canTakeItem(Container target, int slot, ItemStack stack) {
+        return !this.isEmpty() && (this.progress==-1);
+    }
+
+    @Override
+    protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+        return null;
+    }
+
+    @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         this.progress = tag.getInt("progress");
@@ -93,5 +142,10 @@ public class PedestalEntity extends SynchronizedBlockEntity {
     }
     public int getMaxProgress() {
         return this.maxProgress;
+    }
+
+    @Override
+    public int getContainerSize() {
+        return 1;
     }
 }

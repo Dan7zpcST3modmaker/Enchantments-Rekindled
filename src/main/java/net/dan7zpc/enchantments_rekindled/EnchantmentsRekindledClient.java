@@ -2,6 +2,8 @@ package net.dan7zpc.enchantments_rekindled;
 
 import net.dan7zpc.enchantments_rekindled.block.entity.ModBlockEntities;
 import net.dan7zpc.enchantments_rekindled.block.entity.renderer.EnchantmentsPedestalEntityRenderer;
+import net.dan7zpc.enchantments_rekindled.particle.ModParticles;
+import net.dan7zpc.enchantments_rekindled.particle.SoapParticles;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -10,6 +12,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -35,5 +38,9 @@ public class EnchantmentsRekindledClient {
         // Some client setup code
         EnchantmentsRekindled.LOGGER.info("HELLO FROM CLIENT SETUP");
         EnchantmentsRekindled.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+    }
+    @SubscribeEvent
+    public static void  RegisterParticleFactories(RegisterParticleProvidersEvent event){
+        event.registerSpriteSet(ModParticles.SOAP_PARTICLES.get(), SoapParticles.Provider::new);
     }
 }

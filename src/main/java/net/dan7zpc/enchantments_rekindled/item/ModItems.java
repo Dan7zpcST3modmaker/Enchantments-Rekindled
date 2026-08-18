@@ -2,6 +2,8 @@ package net.dan7zpc.enchantments_rekindled.item;
 
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
 import net.dan7zpc.enchantments_rekindled.item.custom.Reward;
+import net.dan7zpc.enchantments_rekindled.item.custom.item.CraftableByHandItem;
+import net.dan7zpc.enchantments_rekindled.item.custom.item.CrushRecipeItem;
 import net.dan7zpc.enchantments_rekindled.item.custom.item.CushableByHandItem;
 import net.dan7zpc.enchantments_rekindled.item.custom.item.QuickTooltipItem;
 import net.minecraft.world.item.Item;
@@ -25,8 +27,18 @@ public class ModItems {
     public static final DeferredItem<Item> EXPERIENCE_PRISM = ITEMS.register("experience_prism",
             ()-> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> ARCHETHER = ITEMS.register("archether",
+            ()-> new CraftableByHandItem(new Item.Properties(),25));
 
-    //experiolite
+    public static final DeferredItem<Item> RAW_PROETHER = ITEMS.register("raw_proether",
+            ()-> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> PROETHER = ITEMS.register("proether",
+            ()-> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> ETHERIUM = ITEMS.register("etherium",
+            ()-> new Item(new Item.Properties()));
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

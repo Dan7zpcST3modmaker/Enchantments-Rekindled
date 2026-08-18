@@ -30,6 +30,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.DEEPSLATE_NYCRIT_ORE);
                         output.accept(ModBlocks.ENCHANTMENTS_PEDESTAL);
                         output.accept(ModBlocks.ENCHANTMENTS_STONE);
+                        output.accept(ModBlocks.ENCHANTMENTS_BRICKS);
+                        output.accept(ModBlocks.SOAP_STONE);
+                        output.accept(ModItems.ARCHETHER);
+                        output.accept(ModItems.RAW_PROETHER);
+                        output.accept(ModItems.PROETHER);
+                        output.accept(ModItems.ETHERIUM);
                         output.accept(ModBlocks.ABYSSAL_BARRIER);
                     }).build());
 

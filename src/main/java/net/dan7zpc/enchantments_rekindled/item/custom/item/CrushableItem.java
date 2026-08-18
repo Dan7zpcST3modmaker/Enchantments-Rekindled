@@ -33,6 +33,11 @@ public class CrushableItem extends CustomModItem implements ICrushable {
         giveTheRewardTo(player);
     }
 
+    @Override
+    public boolean can_crush(Level level, Player player, InteractionHand usedHand) {
+        return true;
+    }
+
     protected void giveTheRewardTo(Player player){
         ItemStack[] pool = reward.getItems();
         int exp = reward.getExperience();

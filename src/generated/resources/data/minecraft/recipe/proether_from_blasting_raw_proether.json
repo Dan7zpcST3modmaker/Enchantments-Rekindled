@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "group": "group",
+  "ingredient": {
+    "item": "enchantments_rekindled:raw_proether"
+  },
+  "result": {
+    "count": 1,
+    "id": "enchantments_rekindled:proether"
+  }
+}

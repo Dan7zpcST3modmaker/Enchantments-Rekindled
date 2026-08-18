@@ -6,4 +6,5 @@ import net.minecraft.world.level.Level;
 
 public interface ICrushable {
     void crush(Level level, Player player, InteractionHand usedHand);
+    boolean can_crush(Level level, Player player, InteractionHand usedHand);
 }

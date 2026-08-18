@@ -25,6 +25,17 @@ public class ModRecipes {
                 }
             });
 
+    public static final DeferredHolder<RecipeSerializer<?>,RecipeSerializer<ItemCrushRecipe>> ITEM_CRUSH_SERIALIZER =
+            SERIALIZERS.register("item_crush",ItemCrushRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>,RecipeType<ItemCrushRecipe>> ITEM_CRUSH_TYPE =
+            TYPES.register("item_crush", () -> new RecipeType<ItemCrushRecipe>() {
+                @Override
+                public String toString() {
+                    return "item_crush";
+                }
+            });
+
+
     public static void register(IEventBus eventBus){
         SERIALIZERS.register(eventBus);
         TYPES.register(eventBus);

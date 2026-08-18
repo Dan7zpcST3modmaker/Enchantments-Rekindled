@@ -8,6 +8,11 @@ import net.dan7zpc.enchantments_rekindled.recipe.ModRecipes;
 import net.dan7zpc.enchantments_rekindled.util.EnchantmentHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
@@ -42,7 +47,8 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
 
     }
     private void serverBoundTick(Level level, BlockPos pos, BlockState blockState){
-        if(!hasRecipe()){resetProgress();return;}
+        if(this.isEmpty()){resetProgress();return;}
+        if(!hasRecipe()){resetProgress();this.progress--;return;}
         if(!isCraftingBegan()) {startCrafting();}
         increaseProgress();
         if(isCraftingFinished()) {craft();resetProgress();}
@@ -50,6 +56,13 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
 
     private void increaseProgress() {
         this.progress++;
+        ((ServerLevel)level).sendParticles(ParticleTypes.ENCHANT,
+                worldPosition.getX() +0.5, worldPosition.getY()+1, worldPosition.getZ()+0.5,
+                1,
+                0.1,0,0.1,
+                1
+        );
+        notifyUpdate();
     }
 
     private void bothBoundTick(Level level, BlockPos pos, BlockState blockState){
@@ -61,17 +74,21 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
         ItemStack result = enchantable(stack)? enchanterCraft():infuserCraft();
         this.clearContents();
         this.inventory.insertItem(0,result,false);
+        level.playSound(level.getNearestPlayer(
+                worldPosition.getX() +0.5, worldPosition.getY()+0.5, worldPosition.getZ()+0.5,
+                15,true
+        ),worldPosition, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f,1f);
         this.notifyUpdate();
     }
 
     private ItemStack infuserCraft(){
         Optional<RecipeHolder<EnchantmentsPedestalRecipe>> recipe = getCurrentRecipe();
-        ItemStack result = recipe.get().value().outputItem();
+        ItemStack result = recipe.get().value().outputItem().copy();
         return result;
     }
 
     private ItemStack enchanterCraft(){
-        return EnchantmentHelper.applyEnchantment(inventory.getStackInSlot(0),"sharpness",5,level);
+        return EnchantmentHelper.affixRandomExperienceStamp(inventory.getStackInSlot(0),level);
     }
 
     private boolean enchantable(ItemStack stack){

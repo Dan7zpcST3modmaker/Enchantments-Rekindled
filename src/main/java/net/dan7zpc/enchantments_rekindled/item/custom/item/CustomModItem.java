@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
+import javax.lang.model.util.Elements;
 import java.util.List;
 
 public class CustomModItem extends Item {
@@ -14,8 +15,18 @@ public class CustomModItem extends Item {
         super(properties);
     }
 
+    public void literalTooltip(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, String text){
+        tooltipComponents.add(Component.literal(text));
+    }
+
     public void tooltip(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, String translationKey){
         tooltipComponents.add(Component.translatable("tooltip."+ EnchantmentsRekindled.MOD_ID+"."+translationKey));
+    }
+    public void fastDynamicTooltip(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, String translationKey,String data){
+        tooltipComponents.add(
+                Component.literal(Component.translatable("tooltip." + EnchantmentsRekindled.MOD_ID + "." + translationKey).getString()+
+                        " §a["+data+"]§r")
+        );
     }
 
     public void shiftTooltip(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, String translationKey){

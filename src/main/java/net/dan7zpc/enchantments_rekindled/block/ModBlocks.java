@@ -2,6 +2,7 @@ package net.dan7zpc.enchantments_rekindled.block;
 
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
 import net.dan7zpc.enchantments_rekindled.block.custom.Pedestal;
+import net.dan7zpc.enchantments_rekindled.block.custom.SoapyBlock;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -33,6 +34,17 @@ public class ModBlocks {
     public static final DeferredBlock<Block> ENCHANTMENTS_STONE = registerBlock("enchantments_stone",
             ()-> new Block(BlockBehaviour.Properties.of()
                     .strength(4)
+                    .sound(SoundType.STONE)
+            ));
+    public static final DeferredBlock<Block> ENCHANTMENTS_BRICKS = registerBlock("enchantments_bricks",
+            ()-> new Block(BlockBehaviour.Properties.of()
+                    .strength(4)
+                    .sound(SoundType.STONE)
+            ));
+    public static final DeferredBlock<Block> SOAP_STONE= registerBlock("soap_stone",
+            ()-> new SoapyBlock(BlockBehaviour.Properties.of()
+                    .strength(4)
+                    .friction(0.989F)
                     .sound(SoundType.STONE)
             ));
     public static final DeferredBlock<Block> ENCHANTMENTS_PEDESTAL = registerBlock("enchantments_pedestal",

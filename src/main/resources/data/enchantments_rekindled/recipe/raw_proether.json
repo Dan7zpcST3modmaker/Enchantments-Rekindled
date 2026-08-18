@@ -1,0 +1,9 @@
+{
+  "type": "enchantments_rekindled:item_crush",
+  "ingredient": {
+    "item": "enchantments_rekindled:archether"
+  },
+  "result": {
+    "id": "enchantments_rekindled:raw_proether"
+  }
+}

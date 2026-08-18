@@ -1,6 +1,7 @@
 package net.dan7zpc.enchantments_rekindled.datagen;
 
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
+import net.dan7zpc.enchantments_rekindled.enchantment.ModEnchantments;
 import net.dan7zpc.enchantments_rekindled.worldgen.ModBiomeModifiers;
 import net.dan7zpc.enchantments_rekindled.worldgen.ModConfiguredFeatures;
 import net.dan7zpc.enchantments_rekindled.worldgen.ModPlacedFeatures;
@@ -19,6 +20,7 @@ public class ModDatapackProvider extends DatapackBuiltinEntriesProvider {
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS , ModBiomeModifiers::bootstrap)
+            .add(Registries.ENCHANTMENT, ModEnchantments::bootstrap)
             ;
 
     public ModDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

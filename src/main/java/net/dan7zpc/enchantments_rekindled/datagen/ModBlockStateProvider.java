@@ -19,6 +19,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.ENCHANTMENTS_STONE);
         blockWithItem(ModBlocks.DEEPSLATE_NYCRIT_ORE);
         blockWithItem(ModBlocks.ABYSSAL_BARRIER);
+        blockWithItem(ModBlocks.ENCHANTMENTS_BRICKS);
+        blockWithItem(ModBlocks.SOAP_STONE);
     }
 
     private void blockWithItem (DeferredBlock<?> deferredBlock){

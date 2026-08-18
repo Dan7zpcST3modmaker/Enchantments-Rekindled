@@ -28,6 +28,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
         furnace_recipe(recipeOutput, ModItems.NYCRIT.get(),ModItems.EXPERIENCE_CRYSTAL.get(),
                 new FurnaceRecipeType[]{FurnaceRecipeType.Default,FurnaceRecipeType.Blasting},0f);
+
+        furnace_recipe(recipeOutput, ModItems.RAW_PROETHER.get(),ModItems.PROETHER.get(),
+                new FurnaceRecipeType[]{FurnaceRecipeType.Blasting},0f,400);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModItems.EXPERIOLITE.get())
                 .pattern("D#D")
                 .pattern("###")
@@ -47,6 +51,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModBlocks.NYCRIT_BLOCK)
                 .unlockedBy(getHasName(ModBlocks.NYCRIT_BLOCK.get()),has(ModBlocks.NYCRIT_BLOCK.get()))
                 .save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.ARCHETHER.get())
+                .requires(Items.IRON_INGOT,2)
+                .requires(Items.GOLD_INGOT,2)
+                .requires(Items.LAPIS_LAZULI,4)
+                .unlockedBy(getHasName(ModBlocks.NYCRIT_BLOCK.get()),has(ModBlocks.NYCRIT_BLOCK.get()))
+                .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModItems.EXPERIENCE_PRISM.get())
                 .pattern(" # ")
                 .pattern("#F#")
@@ -63,6 +73,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('P', ModItems.EXPERIENCE_PRISM)
                 .define('O', Items.OBSIDIAN)
                 .unlockedBy(getHasName(ModItems.EXPERIENCE_PRISM.get()),has(ModItems.EXPERIENCE_PRISM.get()))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModBlocks.SOAP_STONE.get())
+                .pattern("CGC")
+                .pattern("GCG")
+                .pattern("CGC")
+                .define('C', Items.CLAY)
+                .define('G', Items.GUNPOWDER)
+                .unlockedBy(getHasName(ModBlocks.ENCHANTMENTS_PEDESTAL.get()),has(ModBlocks.ENCHANTMENTS_PEDESTAL.get()))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModBlocks.ENCHANTMENTS_BRICKS.get())
+                .pattern("EE")
+                .pattern("EE")
+                .define('E', ModBlocks.ENCHANTMENTS_STONE)
+                .unlockedBy(getHasName(ModBlocks.ENCHANTMENTS_STONE.get()),has(ModBlocks.ENCHANTMENTS_STONE.get()))
                 .save(recipeOutput);
     }
 

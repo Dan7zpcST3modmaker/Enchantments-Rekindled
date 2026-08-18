@@ -17,5 +17,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.EXPERIENCE_CRYSTAL.get());
         basicItem(ModItems.EXPERIOLITE.get());
         basicItem(ModItems.EXPERIENCE_PRISM.get());
+        basicItem(ModItems.ARCHETHER.get());
+        basicItem(ModItems.RAW_PROETHER.get());
+        basicItem(ModItems.PROETHER.get());
+        basicItem(ModItems.ETHERIUM.get());
     }
 }

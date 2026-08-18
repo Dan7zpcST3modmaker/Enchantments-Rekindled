@@ -32,7 +32,7 @@ public class EnchantmentsPedestalCategory implements IRecipeCategory<Enchantment
     private final IDrawable icon;
 
     public EnchantmentsPedestalCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE,0,0,176,85);
+        this.background = helper.createDrawable(TEXTURE,0,0,38,78);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.ENCHANTMENTS_PEDESTAL));
     }
 
@@ -43,7 +43,7 @@ public class EnchantmentsPedestalCategory implements IRecipeCategory<Enchantment
 
     @Override
     public Component getTitle() {
-        return Component.translatable("block.enchantments_rekindled.enchantments_pedestal");
+        return Component.translatable("recipe."+EnchantmentsRekindled.MOD_ID+".enchantments_pedestal");
     }
 
     @Override
@@ -53,11 +53,11 @@ public class EnchantmentsPedestalCategory implements IRecipeCategory<Enchantment
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, EnchantmentsPedestalRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 54,34).addIngredients(recipe.getIngredients().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 11,51).addIngredients(recipe.getIngredients().get(0));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 104,34).addItemStack(recipe.getResultItem(null));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 11,5).addItemStack(recipe.getResultItem(null));
 
-        builder.addSlot(RecipeIngredientRole.CATALYST, 0,0).addItemLike(ModBlocks.ENCHANTMENTS_PEDESTAL);
+        //builder.addSlot(RecipeIngredientRole.CATALYST, -16,-16).addItemLike(ModBlocks.ENCHANTMENTS_PEDESTAL);
     }
 
     @Nullable
