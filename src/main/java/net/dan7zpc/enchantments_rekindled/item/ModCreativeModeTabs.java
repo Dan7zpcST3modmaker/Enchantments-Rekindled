@@ -36,6 +36,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_PROETHER);
                         output.accept(ModItems.PROETHER);
                         output.accept(ModItems.ETHERIUM);
+                        output.accept(ModBlocks.TABLE_OF_KNOWLEDGE);
+                        output.accept(ModItems.ETHERIUM_RUNIC_TEMPLATE);
+                        output.accept(ModBlocks.RITUAL_BLOCK);
                         output.accept(ModBlocks.ABYSSAL_BARRIER);
                     }).build());
 

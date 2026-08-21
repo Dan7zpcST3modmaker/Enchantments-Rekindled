@@ -2,11 +2,14 @@ package net.dan7zpc.enchantments_rekindled.block;
 
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
 import net.dan7zpc.enchantments_rekindled.block.custom.Pedestal;
+import net.dan7zpc.enchantments_rekindled.block.custom.RitualAltar;
 import net.dan7zpc.enchantments_rekindled.block.custom.SoapyBlock;
+import net.dan7zpc.enchantments_rekindled.block.custom.TableOfKnowledge;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.PushReaction;
@@ -45,6 +48,7 @@ public class ModBlocks {
             ()-> new SoapyBlock(BlockBehaviour.Properties.of()
                     .strength(4)
                     .friction(0.989F)
+                    .noTerrainParticles()
                     .sound(SoundType.STONE)
             ));
     public static final DeferredBlock<Block> ENCHANTMENTS_PEDESTAL = registerBlock("enchantments_pedestal",
@@ -61,6 +65,9 @@ public class ModBlocks {
                     .sound(SoundType.DEEPSLATE)
             ));
 
+    public static final DeferredBlock<Block> RITUAL_BLOCK = registerBlock("ritual_block",
+            ()-> new RitualAltar(BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK)));
+
     public static final DeferredBlock<Block> ABYSSAL_BARRIER = registerBlock("abyssal_barrier",
             ()-> new Block(BlockBehaviour.Properties.of()
                     .noLootTable()
@@ -70,6 +77,15 @@ public class ModBlocks {
                     .pushReaction(PushReaction.BLOCK)
                     .explosionResistance(9999)
                     .sound(SoundType.MUD)
+            ));
+
+    public static final DeferredBlock<Block> TABLE_OF_KNOWLEDGE = registerBlock("table_of_knowledge",
+            ()-> new TableOfKnowledge(BlockBehaviour.Properties.of()
+                    .strength(4)
+                    .explosionResistance(5f)
+                    .lightLevel(val -> 8)
+                    .noOcclusion()
+                    .sound(SoundType.STONE)
             ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){

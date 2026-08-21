@@ -8,7 +8,10 @@ import net.dan7zpc.enchantments_rekindled.recipe.ModRecipes;
 import net.dan7zpc.enchantments_rekindled.util.EnchantmentHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -21,8 +24,10 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,6 +36,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class EnchantmentsPedestalEntity extends PedestalEntity {
@@ -88,7 +94,48 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
     }
 
     private ItemStack enchanterCraft(){
-        return EnchantmentHelper.affixRandomExperienceStamp(inventory.getStackInSlot(0),level);
+        String template = getEnchantmentsTemplate();
+        if (Objects.equals(template, "none")) return EnchantmentHelper.affixRandomExperienceStamp(inventory.getStackInSlot(0),level);
+        return EnchantmentHelper.affixExperienceStamp(inventory.getStackInSlot(0),template,level);
+    }
+
+    private String getEnchantmentsTemplate(){
+        String to_return = "none";
+        to_return = getTemplate(this.worldPosition.north());
+        if (Objects.equals(to_return, "none")) to_return = getTemplate(this.worldPosition.west());
+        if (Objects.equals(to_return, "none")) to_return = getTemplate(this.worldPosition.east());
+        if (Objects.equals(to_return, "none")) to_return = getTemplate(this.worldPosition.south());
+        return to_return;
+    }
+
+    private String getTemplate(BlockPos pos){
+        if (!isPedestal(pos)) return "none";
+        assert level != null;
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        BaseContainerBlockEntity  baseContainerBlockEntity = (BaseContainerBlockEntity) blockEntity;
+        ItemStack template = baseContainerBlockEntity.getItem(0);
+        ItemEnchantments enchantments = template.get(DataComponents.ENCHANTMENTS);
+        if(enchantments==null||enchantments.isEmpty())return"none";
+        Holder<Enchantment> enchantment = enchantments.keySet().iterator().next();
+
+        ResourceLocation enchKey = enchantment.unwrapKey()
+                .map(ResourceKey::location)
+                .orElse(null);
+
+        if(enchKey == null) return"none";
+
+        baseContainerBlockEntity.removeItem(0,1);
+        return EnchantmentHelper.getStampNameFromTemplate(enchKey);
+    }
+
+    private boolean isPedestal(BlockPos pos){
+        assert level != null;
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity == null) return false;
+        if (blockEntity instanceof BaseContainerBlockEntity baseContainerBlockEntity) {
+            if(baseContainerBlockEntity.getContainerSize() == 1 && baseContainerBlockEntity.canTakeItem(baseContainerBlockEntity,0,baseContainerBlockEntity.getItem(0))) return true;
+        }
+        return false;
     }
 
     private boolean enchantable(ItemStack stack){

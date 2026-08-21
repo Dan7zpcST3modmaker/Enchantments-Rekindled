@@ -1,0 +1,24 @@
+{
+	"format_version": "1.9.0",
+	"parent": "minecraft:block/block",
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"6": "enchantments_rekindled:block/ritual",
+		"particle": "minecraft:block/gold_block"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [10.66667, 5.33333, 16, 10.66667], "texture": "#6"},
+				"east": {"uv": [0, 5.33333, 5.33333, 10.66667], "texture": "#6"},
+				"south": {"uv": [0, 0, 5.33333, 5.33333], "texture": "#6"},
+				"west": {"uv": [5.33333, 5.33333, 10.66667, 10.66667], "texture": "#6"},
+				"up": {"uv": [10.66667, 5.33333, 5.33333, 0], "texture": "#6"},
+				"down": {"uv": [16, 0, 10.66667, 5.33333], "texture": "#6"}
+			}
+		}
+	]
+}

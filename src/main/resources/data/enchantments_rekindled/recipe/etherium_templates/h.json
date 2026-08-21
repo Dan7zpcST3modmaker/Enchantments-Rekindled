@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "enchantments_rekindled:etherium"
+  },
+  "result": {
+    "id": "enchantments_rekindled:etherium_runic_template",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:galactic/template/t_h": 1
+      }
+    },
+    "count": 1
+  }
+}

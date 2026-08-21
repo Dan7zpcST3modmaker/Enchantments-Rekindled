@@ -81,7 +81,7 @@ public class Pedestal extends BaseEntityBlock {
                 level.playSound(player,pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS,1f,2f);
             } else if (stack.isEmpty() && !enchantmentsPedestalEntity.inventory.getStackInSlot(0).isEmpty()) {
                 ItemStack onPedestal = enchantmentsPedestalEntity.inventory.extractItem(0,1,false);
-                player.setItemInHand(InteractionHand.MAIN_HAND, onPedestal);
+                player.addItem(onPedestal);
                 enchantmentsPedestalEntity.clearContents();
                 level.playSound(player,pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS,1f,1f);
             }

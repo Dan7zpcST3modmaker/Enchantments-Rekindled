@@ -35,6 +35,16 @@ public class ModRecipes {
                 }
             });
 
+    public static final DeferredHolder<RecipeSerializer<?>,RecipeSerializer<TableOfKnowledgeRecipe>> TABLE_OF_KNOWLEDGE_SERIALIZER =
+            SERIALIZERS.register("table_of_knowledge",TableOfKnowledgeRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>,RecipeType<TableOfKnowledgeRecipe>> TABLE_OF_KNOWLEDGE_TYPE =
+            TYPES.register("table_of_knowledge", () -> new RecipeType<TableOfKnowledgeRecipe>() {
+                @Override
+                public String toString() {
+                    return "table_of_knowledge";
+                }
+            });
+
 
     public static void register(IEventBus eventBus){
         SERIALIZERS.register(eventBus);

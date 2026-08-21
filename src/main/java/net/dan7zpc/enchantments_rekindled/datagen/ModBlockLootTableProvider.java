@@ -23,6 +23,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.ENCHANTMENTS_PEDESTAL.get());
         dropSelf(ModBlocks.ENCHANTMENTS_BRICKS.get());
         dropSelf(ModBlocks.SOAP_STONE.get());
+        dropSelf(ModBlocks.TABLE_OF_KNOWLEDGE.get());
+        dropSelf(ModBlocks.RITUAL_BLOCK.get());
 
         dropOre(ModBlocks.NYCRIT_ORE.get(),ModItems.NYCRIT.get());
         dropOre(ModBlocks.DEEPSLATE_NYCRIT_ORE.get(),ModItems.NYCRIT.get());

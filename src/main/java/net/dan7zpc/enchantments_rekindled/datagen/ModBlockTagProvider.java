@@ -27,6 +27,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.ENCHANTMENTS_PEDESTAL.get())
                 .add(ModBlocks.ENCHANTMENTS_BRICKS.get())
                 .add(ModBlocks.SOAP_STONE.get())
+                .add(ModBlocks.TABLE_OF_KNOWLEDGE.get())
+                .add(ModBlocks.RITUAL_BLOCK.get())
         ;
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.NYCRIT_BLOCK.get())

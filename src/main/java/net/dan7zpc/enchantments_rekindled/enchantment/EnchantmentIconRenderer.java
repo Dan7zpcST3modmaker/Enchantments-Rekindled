@@ -32,10 +32,15 @@ public class EnchantmentIconRenderer {
     static {
         for (int i = 0; i < 26; i++) {
             ResourceLocation enchantmentKey = ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "galactic/" + (char)('a'+i));
+            ResourceLocation enchantmentTemplateKey = ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "galactic/template/t_" + (char)('a'+i));
 
             ENCHANTMENT_MAP.put(
                     enchantmentKey,
                     ResourceLocation.parse(EnchantmentsRekindled.MOD_ID+ ":textures/gui/enchantments/galactic/"+(char)('a'+i)+".png")
+            );
+            ENCHANTMENT_MAP.put(
+                    enchantmentTemplateKey,
+                    ResourceLocation.parse(EnchantmentsRekindled.MOD_ID+ ":textures/gui/enchantments/galactic/template/"+(char)('a'+i)+".png")
             );
         }
     }
@@ -67,7 +72,7 @@ public class EnchantmentIconRenderer {
 
         GuiGraphics graphics = event.getGraphics();
 
-        int tooltipX = event.getX()+160;
+        int tooltipX = event.getX()+180;
         int tooltipY = event.getY()-8;
 
         int iconX = tooltipX + tooltipWidth;// + ICON_OFFSET;

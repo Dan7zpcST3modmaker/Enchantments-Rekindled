@@ -15,6 +15,17 @@ import java.util.Random;
 
 public class EnchantmentHelper {
     private static Random rand = new Random();
+    private static final Map<ResourceLocation,String> TEMPLATE_TO_ID_MAP = new HashMap<>();
+    static {
+        for (int i = 0; i < 26; i++) {
+            ResourceLocation enchantmentTemplateKey = ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "galactic/template/t_" + (char)('a'+i));
+
+            TEMPLATE_TO_ID_MAP.put(
+                    enchantmentTemplateKey,
+                    ""+(char)('a'+i)
+            );
+        }
+    }
 
     public static ItemStack applyEnchantment(ItemStack stack, ResourceLocation id, int level, Level world){
         ItemStack result = stack.copy();
@@ -46,5 +57,9 @@ public class EnchantmentHelper {
 
     private static String randomExperienceStampId() {
         return String.valueOf((char)('a'+ rand.nextInt(26)));
+    }
+
+    public static String getStampNameFromTemplate(ResourceLocation enchKey) {
+        return TEMPLATE_TO_ID_MAP.get(enchKey);
     }
 }

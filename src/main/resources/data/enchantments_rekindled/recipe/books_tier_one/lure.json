@@ -1,0 +1,53 @@
+{
+  "type": "enchantments_rekindled:table_of_knowledge",
+  "ingredient": {
+    "item": "minecraft:book"
+  },
+  "rune1": {
+    "id": "enchantments_rekindled:experiolite",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:galactic/l": 1
+      }
+    },
+    "count": 1
+  },
+  "rune2": {
+    "id": "enchantments_rekindled:experiolite",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:galactic/u": 1
+      }
+    },
+    "count": 1
+  },
+  "rune3": {
+    "id": "enchantments_rekindled:experiolite",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:galactic/r": 1
+      }
+    },
+    "count": 1
+  },
+  "rune4": {
+    "id": "enchantments_rekindled:experiolite",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:galactic/e": 1
+      }
+    },
+    "count": 1
+  },
+  "result": {
+    "id": "minecraft:enchanted_book",
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "minecraft:lure": 1
+        }
+      }
+    },
+    "count": 1
+  }
+}

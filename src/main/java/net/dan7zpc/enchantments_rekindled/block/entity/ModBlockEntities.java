@@ -17,6 +17,14 @@ public class ModBlockEntities {
             BLOCK_ENTITY_TYPE_DEFERRED_REGISTER.register("enchantments_pedestal_be",() -> BlockEntityType.Builder.of(
                     EnchantmentsPedestalEntity::new, ModBlocks.ENCHANTMENTS_PEDESTAL.get()).build(null));
 
+    public static final Supplier<BlockEntityType<TableOfKnowledgeEntity>> TABLE_OF_KNOWLEDGE_BE =
+            BLOCK_ENTITY_TYPE_DEFERRED_REGISTER.register("table_of_knowledge_be",() -> BlockEntityType.Builder.of(
+                    TableOfKnowledgeEntity::new, ModBlocks.TABLE_OF_KNOWLEDGE.get()).build(null));
+
+    public static final Supplier<BlockEntityType<RitualAltarEntity>> RITUAL_ALTAR_BE =
+            BLOCK_ENTITY_TYPE_DEFERRED_REGISTER.register("ritual_altar_be",() -> BlockEntityType.Builder.of(
+                    RitualAltarEntity::new, ModBlocks.RITUAL_BLOCK.get()).build(null));
+
 
     public static void register(IEventBus eventBus){
         BLOCK_ENTITY_TYPE_DEFERRED_REGISTER.register(eventBus);

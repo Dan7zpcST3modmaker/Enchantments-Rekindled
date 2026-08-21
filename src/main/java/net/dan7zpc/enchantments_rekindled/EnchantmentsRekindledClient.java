@@ -2,6 +2,7 @@ package net.dan7zpc.enchantments_rekindled;
 
 import net.dan7zpc.enchantments_rekindled.block.entity.ModBlockEntities;
 import net.dan7zpc.enchantments_rekindled.block.entity.renderer.EnchantmentsPedestalEntityRenderer;
+import net.dan7zpc.enchantments_rekindled.block.entity.renderer.TableOfKnowledgeEntityRenderer;
 import net.dan7zpc.enchantments_rekindled.particle.ModParticles;
 import net.dan7zpc.enchantments_rekindled.particle.SoapParticles;
 import net.minecraft.client.Minecraft;
@@ -31,6 +32,7 @@ public class EnchantmentsRekindledClient {
     @SubscribeEvent
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event){
         event.registerBlockEntityRenderer(ModBlockEntities.ENCHANTMENTS_PEDESTAL_BE.get(), EnchantmentsPedestalEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.TABLE_OF_KNOWLEDGE_BE.get(), TableOfKnowledgeEntityRenderer::new);
     }
 
     @SubscribeEvent

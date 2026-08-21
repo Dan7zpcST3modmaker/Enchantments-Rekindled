@@ -18,7 +18,7 @@ public class CraftableByHandItem extends CrushRecipeItem{
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltip(stack,context,tooltipComponents,tooltipFlag,"crushable_by_hand");
+        tooltip(stack,context,tooltipComponents,tooltipFlag,"craftable_by_hand");
         fastDynamicTooltip(stack,context,tooltipComponents,tooltipFlag,"exp_cost",""+this.reward.getExperience());
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }

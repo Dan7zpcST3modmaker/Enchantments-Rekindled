@@ -2,14 +2,18 @@ package net.dan7zpc.enchantments_rekindled.datagen;
 
 import net.dan7zpc.enchantments_rekindled.block.ModBlocks;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
+import net.dan7zpc.enchantments_rekindled.util.EnchantmentHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.StonecutterRecipe;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -74,6 +78,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('O', Items.OBSIDIAN)
                 .unlockedBy(getHasName(ModItems.EXPERIENCE_PRISM.get()),has(ModItems.EXPERIENCE_PRISM.get()))
                 .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModBlocks.TABLE_OF_KNOWLEDGE.get())
+                .pattern("III")
+                .pattern("POP")
+                .pattern("OOO")
+                .define('I', ModItems.ETHERIUM)
+                .define('P', ModItems.EXPERIENCE_PRISM)
+                .define('O', Items.OBSIDIAN)
+                .unlockedBy(getHasName(ModItems.ETHERIUM.get()),has(ModItems.ETHERIUM.get()))
+                .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModBlocks.SOAP_STONE.get())
                 .pattern("CGC")
                 .pattern("GCG")
@@ -88,6 +101,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('E', ModBlocks.ENCHANTMENTS_STONE)
                 .unlockedBy(getHasName(ModBlocks.ENCHANTMENTS_STONE.get()),has(ModBlocks.ENCHANTMENTS_STONE.get()))
                 .save(recipeOutput);
+        stonecutterResultFromBase(recipeOutput,RecipeCategory.BUILDING_BLOCKS,ModBlocks.RITUAL_BLOCK.get(),Items.GOLD_BLOCK);
     }
 
     protected void furnace_recipe(RecipeOutput recipeOutput, ItemLike in, ItemLike out, FurnaceRecipeType[] furnaceRecipeTypes){

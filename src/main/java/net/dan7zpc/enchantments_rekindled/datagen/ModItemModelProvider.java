@@ -21,5 +21,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.RAW_PROETHER.get());
         basicItem(ModItems.PROETHER.get());
         basicItem(ModItems.ETHERIUM.get());
+        basicItem(ModItems.ETHERIUM_RUNIC_TEMPLATE.get());
     }
 }

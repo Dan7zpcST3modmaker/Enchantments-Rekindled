@@ -33,6 +33,19 @@ public class ModEnchantments {
                                     1,
                                     EquipmentSlotGroup.ANY))
                             .exclusiveWith(enchantments.getOrThrow(create("experience_stamps"))));
+            register(context,
+                    ResourceKey.create(Registries.ENCHANTMENT,
+                            ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "galactic/template/t_"+(char)('a'+i)))
+                    , Enchantment.enchantment(Enchantment.definition(
+                                    items.getOrThrow(ItemTags.TRIM_TEMPLATES),
+                                    items.getOrThrow(ItemTags.TRIM_TEMPLATES),
+                                    1,
+                                    1,
+                                    Enchantment.dynamicCost(0, 0),
+                                    Enchantment.dynamicCost(0, 0),
+                                    1,
+                                    EquipmentSlotGroup.ANY))
+                            .exclusiveWith(enchantments.getOrThrow(create("experience_templates"))));
         }
     }
 

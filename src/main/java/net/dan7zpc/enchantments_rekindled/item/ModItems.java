@@ -39,6 +39,9 @@ public class ModItems {
     public static final DeferredItem<Item> ETHERIUM = ITEMS.register("etherium",
             ()-> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> ETHERIUM_RUNIC_TEMPLATE = ITEMS.register("etherium_runic_template",
+            ()-> new QuickTooltipItem(new Item.Properties(),"etherium_runic_template","etherium_runic_template_shift",""));
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }
