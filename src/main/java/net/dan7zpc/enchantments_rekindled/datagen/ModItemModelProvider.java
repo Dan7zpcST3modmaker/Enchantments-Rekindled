@@ -22,5 +22,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.PROETHER.get());
         basicItem(ModItems.ETHERIUM.get());
         basicItem(ModItems.ETHERIUM_RUNIC_TEMPLATE.get());
+        basicItem(ModItems.VOIDPOWDER.get());
+        basicItem(ModItems.METAL_SCRAP.get());
+        basicItem(ModItems.BROKER_SHARD.get());
+        basicItem(ModItems.NOCTETHER.get());
+        basicItem(ModItems.ABYSSAL_JAM.get());
     }
 }

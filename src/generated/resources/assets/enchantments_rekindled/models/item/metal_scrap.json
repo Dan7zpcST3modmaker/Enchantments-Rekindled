@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "enchantments_rekindled:item/metal_scrap"
+  }
+}

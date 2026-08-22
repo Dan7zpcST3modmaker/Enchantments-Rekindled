@@ -1,156 +1,154 @@
 package net.dan7zpc.enchantments_rekindled.block.entity;
 
-import net.dan7zpc.enchantments_rekindled.recipe.ModRecipes;
-import net.dan7zpc.enchantments_rekindled.recipe.TableOfKnowledgeRecipe;
-import net.dan7zpc.enchantments_rekindled.recipe.TableOfKnowledgeRecipeInput;
+import net.dan7zpc.enchantments_rekindled.item.ModItems;
+import net.dan7zpc.enchantments_rekindled.util.PriceList;
+import net.dan7zpc.enchantments_rekindled.util.PricedPair;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Containers;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class RitualAltarEntity extends PedestalEntity {
+public class RitualAltarEntity extends BlockEntity {
+    protected int balance = 0;
+    protected int timer = 80;
+    protected PriceList out_price_list = new PriceList(
+            new PricedPair(1, ModItems.VOIDPOWDER),
+            new PricedPair(4, ModItems.METAL_SCRAP),
+            new PricedPair(16, ModItems.BROKER_SHARD),
+            new PricedPair(32, ModItems.NOCTETHER),
+            new PricedPair(128, ModItems.ABYSSAL_JAM),
+            new PricedPair(256, ModItems.VOID_TRINKET)
+    );
     public RitualAltarEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.RITUAL_ALTAR_BE.get(), pos, blockState);
     }
 
     public void tick(Level level, BlockPos pos, BlockState blockState){
         if(!level.isClientSide()){serverBoundTick(level,pos,blockState);}
+        bothBoundTick(level,pos,blockState);
     }
 
     private void clientBoundTick(Level level, BlockPos pos, BlockState blockState){
 
     }
-    private void serverBoundTick(Level level, BlockPos pos, BlockState blockState){
-        if(this.isEmpty()){resetProgress();return;}
-        if(!isPedestal(worldPosition.north())){resetProgress();return;}
-        if(!isPedestal(worldPosition.east())){resetProgress();return;}
-        if(!isPedestal(worldPosition.south())){resetProgress();return;}
-        if(!isPedestal(worldPosition.west())){resetProgress();return;}
-        if(!hasRecipe()){resetProgress();this.progress--;return;}
-        if(!isCraftingBegan()) {startCrafting();}
-        increaseProgress();
-        if(isCraftingFinished()) {craft();resetProgress();}
+
+    public void addBalance(int amount){
+        balance += amount;
+        reset_timer();
     }
 
-    private void increaseProgress() {
-        this.progress++;
-        ((ServerLevel)level).sendParticles(ParticleTypes.ENCHANT,
-                worldPosition.getX() +0.5, worldPosition.getY()+1, worldPosition.getZ()+0.5,
-                1,
-                0.1,0,0.1,
-                1
-        );
-        notifyUpdate();
+    private void serverBoundTick(Level level, BlockPos pos, BlockState blockState){
+        if (trading_started()){step_timer();}
     }
 
     private void bothBoundTick(Level level, BlockPos pos, BlockState blockState){
+        if(time_is_up()){
+            buyMaxPossible();reset_timer();}
+    }
 
+    private void buyMaxPossible() {
+        List<PricedPair> itemsPricedPairs = out_price_list.getMostExpensiveProductSetAvailable(balance);
+        SimpleContainer drops = new SimpleContainer(itemsPricedPairs.size());
+        for (int i = 0; i < itemsPricedPairs.size(); i++) {
+            ItemStack stack = new ItemStack((ItemLike) itemsPricedPairs.get(i).object());
+            drops.addItem(stack);
+        }
+        Containers.dropContents(level,worldPosition,drops);
+        flush_balance();
+    }
+
+    private void flush_balance() {
+        this.balance = 0;
+        notifyUpdate();
+    }
+
+    private boolean time_is_up() {
+        return  timer <= 0;
+    }
+
+    private void step_timer() {
+        timer--;
+        notifyUpdate();
+    }
+
+    private void reset_timer(){
+        timer = 80;
+        notifyUpdate();
+    }
+
+    private boolean trading_started(){
+        return this.balance > 0;
     }
 
     @Override
-    public void clearContents() {
-        super.clearContents();
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+        tag.putInt("balance",balance);
     }
 
-    private void drainRunes(){
-        ItemStack rune1 = getRune(worldPosition.north());
-        ItemStack rune2 = getRune(worldPosition.east());
-        ItemStack rune3 = getRune(worldPosition.south());
-        ItemStack rune4 = getRune(worldPosition.west());
-        rune1.shrink(1);
-        rune2.shrink(1);
-        rune3.shrink(1);
-        rune4.shrink(1);
+    @Override
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
+        this.balance = tag.getInt("balance");
     }
 
-    private void craft() {
-        ItemStack result = enchanterCraft();
-        if (!result.isEmpty()) {
-            this.clearContents();
-            this.drainRunes();
-            this.inventory.insertItem(0, result, false);
-            level.playSound(level.getNearestPlayer(
-                    worldPosition.getX() + 0.5, worldPosition.getY() + 0.5, worldPosition.getZ() + 0.5,
-                    15, true
-            ), worldPosition, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
-            this.notifyUpdate();
-        }
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    private ItemStack enchanterCraft(){
-        Optional<RecipeHolder<TableOfKnowledgeRecipe>> recipe = getCurrentRecipe();
-        ItemStack result = recipe.get().value().outputItem().copy();
-        return result;
+    @Override
+    public @NotNull CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return writeClient(new CompoundTag(),registries);
     }
 
-    private boolean isPedestal(BlockPos pos){
-        assert level != null;
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity == null) return false;
-        if (blockEntity instanceof BaseContainerBlockEntity baseContainerBlockEntity) {
-            if(baseContainerBlockEntity.getContainerSize() == 1 && baseContainerBlockEntity.canTakeItem(baseContainerBlockEntity,0,baseContainerBlockEntity.getItem(0))) return true;
-        }
-        return false;
+    @Override
+    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider registries) {
+        readClient(tag,registries);
     }
 
-    private boolean isCraftingFinished() {
-        return this.getProgress() >= this.getMaxProgress();
+    public void readClient(CompoundTag tag, HolderLookup.Provider registries) {
+        loadAdditional(tag,registries);
     }
 
-    private void startCrafting() {
-        resetProgress();
-        this.notifyUpdate();
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider registries) {
+        CompoundTag tag = pkt.getTag();
+        readClient(tag==null? new CompoundTag():tag,registries);
     }
 
-
-    private boolean isCraftingBegan() {
-        return this.getProgress() > 0;
+    public CompoundTag writeClient(CompoundTag tag, HolderLookup.Provider registries){
+        saveAdditional(tag,registries);
+        return tag;
     }
 
-    private void resetProgress() {
-        this.progress = 0;
-        this.maxProgress = 100;
-        this.notifyUpdate();
+    public void sendData(){
+        if(level instanceof ServerLevel serverLevel)
+            serverLevel.getChunkSource().blockChanged(getBlockPos());
     }
 
-    private boolean hasRecipe() {
-        Optional<RecipeHolder<TableOfKnowledgeRecipe>> recipe = getCurrentRecipe();
-        if(recipe.isEmpty()){
-            return false;
-        }
-        ItemStack output = recipe.get().value().outputItem();
-        return !output.isEmpty();
+    public void notifyUpdate(){
+        setChanged();
+        sendData();
     }
 
-    private Optional<RecipeHolder<TableOfKnowledgeRecipe>> getCurrentRecipe() {
-        ItemStack rune1 = getRune(worldPosition.north());
-        ItemStack rune2 = getRune(worldPosition.east());
-        ItemStack rune3 = getRune(worldPosition.south());
-        ItemStack rune4 = getRune(worldPosition.west());
-        return this.level.getRecipeManager().
-                getRecipeFor(ModRecipes.TABLE_OF_KNOWLEDGE_TYPE.get(), new TableOfKnowledgeRecipeInput(inventory.getStackInSlot(0),
-                        rune1,
-                        rune2,
-                        rune3,
-                        rune4
-                        ),level);
-    }
-
-    private ItemStack getRune(BlockPos pos){
-        if (!isPedestal(pos)) return  ItemStack.EMPTY;
-        BaseContainerBlockEntity pedestal = (BaseContainerBlockEntity) level.getBlockEntity(pos);
-        return pedestal.getItem(0);
+    public int getBalance(){
+        return this.balance;
     }
 }

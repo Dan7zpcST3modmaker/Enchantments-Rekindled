@@ -13,6 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -44,6 +45,11 @@ public class RitualAltar extends BaseEntityBlock {
         return CODEC;
     }
 
+    @Override
+    protected RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -53,6 +59,12 @@ public class RitualAltar extends BaseEntityBlock {
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         super.stepOn(level, pos, state, entity);
+        //if(level.isClientSide())return;
+        if(entity instanceof ItemEntity itemEntity){
+            RitualAltarEntity ritualAltarEntity = (RitualAltarEntity) level.getBlockEntity(pos);
+            ritualAltarEntity.addBalance(itemEntity.getItem().getCount());
+            itemEntity.kill();
+        }
     }
 
     @Override
@@ -88,7 +100,7 @@ public class RitualAltar extends BaseEntityBlock {
             return null;
         }
 
-        return createTickerHelper(blockEntityType, ModBlockEntities.TABLE_OF_KNOWLEDGE_BE.get(),
+        return createTickerHelper(blockEntityType, ModBlockEntities.RITUAL_ALTAR_BE.get(),
                 (level1, pos, state1, blockEntity) -> blockEntity.tick(level1,pos,state1));
     }
 }

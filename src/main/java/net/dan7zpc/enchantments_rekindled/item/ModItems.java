@@ -1,6 +1,7 @@
 package net.dan7zpc.enchantments_rekindled.item;
 
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
+import net.dan7zpc.enchantments_rekindled.item.custom.FuelItem;
 import net.dan7zpc.enchantments_rekindled.item.custom.Reward;
 import net.dan7zpc.enchantments_rekindled.item.custom.item.CraftableByHandItem;
 import net.dan7zpc.enchantments_rekindled.item.custom.item.CrushRecipeItem;
@@ -41,6 +42,24 @@ public class ModItems {
 
     public static final DeferredItem<Item> ETHERIUM_RUNIC_TEMPLATE = ITEMS.register("etherium_runic_template",
             ()-> new QuickTooltipItem(new Item.Properties(),"etherium_runic_template","etherium_runic_template_shift",""));
+
+    public static final DeferredItem<Item> VOIDPOWDER = ITEMS.register("voidpowder",
+            ()-> new CushableByHandItem(new Item.Properties(),new Reward(new ItemStack[]{}, 0)));
+
+    public static final DeferredItem<Item> METAL_SCRAP = ITEMS.register("metal_scrap",
+            ()-> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> BROKER_SHARD = ITEMS.register("broker_shard",
+            ()-> new FuelItem(new Item.Properties(),400));
+
+    public static final DeferredItem<Item> NOCTETHER = ITEMS.register("noctether",
+            ()-> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> ABYSSAL_JAM = ITEMS.register("abyssal_jam",
+            ()-> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> VOID_TRINKET = ITEMS.register("void_trinket",
+            ()-> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
