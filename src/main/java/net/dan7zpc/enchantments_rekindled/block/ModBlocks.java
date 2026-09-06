@@ -39,6 +39,11 @@ public class ModBlocks {
                     .strength(4)
                     .sound(SoundType.STONE)
             ));
+    public static final DeferredBlock<Block> BROKER_STONE = registerBlock("broker_stone",
+            ()-> new Block(BlockBehaviour.Properties.of()
+                    .strength(-1)
+                    .sound(SoundType.STONE)
+            ));
     public static final DeferredBlock<Block> ENCHANTMENTS_BRICKS = registerBlock("enchantments_bricks",
             ()-> new Block(BlockBehaviour.Properties.of()
                     .strength(4)

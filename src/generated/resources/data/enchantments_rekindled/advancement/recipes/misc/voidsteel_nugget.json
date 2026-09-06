@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nycrit_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enchantments_rekindled:nycrit_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enchantments_rekindled:voidsteel_nugget"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nycrit_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enchantments_rekindled:voidsteel_nugget"
+    ]
+  }
+}

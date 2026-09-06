@@ -16,6 +16,12 @@ public class ModParticles {
     public static final Supplier<SimpleParticleType> SOAP_PARTICLES =
             PARTICLE_TYPES.register("soap_particles", () -> new SimpleParticleType(true));
 
+    public static final Supplier<SimpleParticleType> VOID_PLOP_PARTICLES =
+            PARTICLE_TYPES.register("void_plop_particles", () -> new SimpleParticleType(true));
+
+    public static final Supplier<SimpleParticleType> VOID_WAVE_PARTICLES =
+            PARTICLE_TYPES.register("void_wave_particles", () -> new SimpleParticleType(true));
+
     public static final void register(IEventBus eventBus){
         PARTICLE_TYPES.register(eventBus);
     }

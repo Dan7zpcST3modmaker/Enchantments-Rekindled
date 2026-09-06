@@ -1,0 +1,9 @@
+{
+  "type": "enchantments_rekindled:enchantments_pedestal",
+  "ingredient": {
+    "item": "enchantments_rekindled:metal_scrap"
+  },
+  "result": {
+    "id": "enchantments_rekindled:voidsteel_nugget"
+  }
+}

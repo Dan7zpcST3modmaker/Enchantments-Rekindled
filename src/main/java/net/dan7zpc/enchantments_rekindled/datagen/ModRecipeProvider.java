@@ -33,6 +33,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         furnace_recipe(recipeOutput, ModItems.NYCRIT.get(),ModItems.EXPERIENCE_CRYSTAL.get(),
                 new FurnaceRecipeType[]{FurnaceRecipeType.Default,FurnaceRecipeType.Blasting},0f);
 
+        furnace_recipe(recipeOutput, ModItems.METAL_SCRAP.get(),Items.IRON_NUGGET,
+                new FurnaceRecipeType[]{FurnaceRecipeType.Default,FurnaceRecipeType.Blasting},0f);
+
         furnace_recipe(recipeOutput, ModItems.RAW_PROETHER.get(),ModItems.PROETHER.get(),
                 new FurnaceRecipeType[]{FurnaceRecipeType.Blasting},0f,400);
 
@@ -53,6 +56,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.NYCRIT.get(),9)
                 .requires(ModBlocks.NYCRIT_BLOCK)
+                .unlockedBy(getHasName(ModBlocks.NYCRIT_BLOCK.get()),has(ModBlocks.NYCRIT_BLOCK.get()))
+                .save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.VOIDSTEEL_NUGGET.get(),9)
+                .requires(ModItems.VOIDSTEEL_INGOT)
+                .unlockedBy(getHasName(ModBlocks.NYCRIT_BLOCK.get()),has(ModBlocks.NYCRIT_BLOCK.get()))
+                .save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.VOIDSTEEL_INGOT.get())
+                .requires(ModItems.VOIDSTEEL_NUGGET,9)
                 .unlockedBy(getHasName(ModBlocks.NYCRIT_BLOCK.get()),has(ModBlocks.NYCRIT_BLOCK.get()))
                 .save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.ARCHETHER.get())

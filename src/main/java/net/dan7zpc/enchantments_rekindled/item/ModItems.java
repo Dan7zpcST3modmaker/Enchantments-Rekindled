@@ -50,7 +50,7 @@ public class ModItems {
             ()-> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> BROKER_SHARD = ITEMS.register("broker_shard",
-            ()-> new FuelItem(new Item.Properties(),400));
+            ()-> new FuelItem(new Item.Properties(),3200));
 
     public static final DeferredItem<Item> NOCTETHER = ITEMS.register("noctether",
             ()-> new Item(new Item.Properties()));
@@ -59,6 +59,12 @@ public class ModItems {
             ()-> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> VOID_TRINKET = ITEMS.register("void_trinket",
+            ()-> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> VOIDSTEEL_INGOT = ITEMS.register("voidsteel_ingot",
+            ()-> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> VOIDSTEEL_NUGGET = ITEMS.register("voidsteel_nugget",
             ()-> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus){

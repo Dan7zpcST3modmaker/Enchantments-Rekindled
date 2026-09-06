@@ -4,32 +4,28 @@ import com.mojang.serialization.MapCodec;
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
 import net.dan7zpc.enchantments_rekindled.block.entity.ModBlockEntities;
 import net.dan7zpc.enchantments_rekindled.block.entity.RitualAltarEntity;
-import net.dan7zpc.enchantments_rekindled.block.entity.TableOfKnowledgeEntity;
+import net.dan7zpc.enchantments_rekindled.item.ModItemTagProvider;
+import net.dan7zpc.enchantments_rekindled.particle.ModParticles;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -59,11 +55,10 @@ public class RitualAltar extends BaseEntityBlock {
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         super.stepOn(level, pos, state, entity);
-        //if(level.isClientSide())return;
-        if(entity instanceof ItemEntity itemEntity){
-            RitualAltarEntity ritualAltarEntity = (RitualAltarEntity) level.getBlockEntity(pos);
-            ritualAltarEntity.addBalance(itemEntity.getItem().getCount());
-            itemEntity.kill();
+        RitualAltarEntity altarEntity = (RitualAltarEntity) level.getBlockEntity(pos);
+        if(entity instanceof ItemEntity){
+            assert altarEntity != null;
+            altarEntity.stepOn(level,pos,state,entity);
         }
     }
 
@@ -75,6 +70,12 @@ public class RitualAltar extends BaseEntityBlock {
 
     public void tooltip(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, String translationKey){
         tooltipComponents.add(Component.translatable("tooltip."+ EnchantmentsRekindled.MOD_ID+"."+translationKey));
+    }
+
+    @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if(level.getBlockEntity(pos) instanceof RitualAltarEntity ritualAltarEntity){ritualAltarEntity.recalculateModules();}
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     public void shiftTooltip(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, String translationKey){

@@ -41,9 +41,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.RITUAL_BLOCK);
                         output.accept(ModItems.VOIDPOWDER);
                         output.accept(ModItems.METAL_SCRAP);
+                        output.accept(ModItems.VOIDSTEEL_NUGGET);
+                        output.accept(ModItems.VOIDSTEEL_INGOT);
                         output.accept(ModItems.BROKER_SHARD);
                         output.accept(ModItems.NOCTETHER);
                         output.accept(ModItems.ABYSSAL_JAM);
+                        output.accept(ModItems.VOID_TRINKET);
+                        output.accept(ModBlocks.BROKER_STONE);
                         output.accept(ModBlocks.ABYSSAL_BARRIER);
                     }).build());
 

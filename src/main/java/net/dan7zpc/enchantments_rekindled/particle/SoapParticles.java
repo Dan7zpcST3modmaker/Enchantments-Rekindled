@@ -26,6 +26,7 @@ public class SoapParticles extends TextureSheetParticle {
         this.bCol = color[2];
 
         float size =this.lifetime-this.age;
+        this.quadSize = size;
         this.setSize(size,size);
     }
 

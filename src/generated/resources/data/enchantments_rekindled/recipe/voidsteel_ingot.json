@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "enchantments_rekindled:voidsteel_nugget"
+    },
+    {
+      "item": "enchantments_rekindled:voidsteel_nugget"
+    },
+    {
+      "item": "enchantments_rekindled:voidsteel_nugget"
+    },
+    {
+      "item": "enchantments_rekindled:voidsteel_nugget"
+    },
+    {
+      "item": "enchantments_rekindled:voidsteel_nugget"
+    },
+    {
+      "item": "enchantments_rekindled:voidsteel_nugget"
+    },
+    {
+      "item": "enchantments_rekindled:voidsteel_nugget"
+    },
+    {
+      "item": "enchantments_rekindled:voidsteel_nugget"
+    },
+    {
+      "item": "enchantments_rekindled:voidsteel_nugget"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "enchantments_rekindled:voidsteel_ingot"
+  }
+}
