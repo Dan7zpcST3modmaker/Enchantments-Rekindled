@@ -47,6 +47,44 @@ public class ModEnchantments {
                                     EquipmentSlotGroup.ANY))
                             .exclusiveWith(enchantments.getOrThrow(create("experience_templates"))));
         }
+
+        String[] voidbound_stamps = {
+          "alpha", "beta", "gamma", "delta",
+          "epsilon", "zeta", "eta", "theta",
+          "iota", "kappa", "lambda", "mu",
+          "nu", "xi", "omicron", "pi",
+          "rho", "sigma", "tau", "upsilon",
+          "phi", "chi", "psi", "omega"
+        };
+
+        for (int i = 0; i < voidbound_stamps.length; i++) {
+            register(context,
+                    ResourceKey.create(Registries.ENCHANTMENT,
+                            ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "greek/"+voidbound_stamps[i]))
+                    , Enchantment.enchantment(Enchantment.definition(
+                                    items.getOrThrow(ItemTags.TRIM_TEMPLATES),
+                                    items.getOrThrow(ItemTags.TRIM_TEMPLATES),
+                                    1,
+                                    1,
+                                    Enchantment.dynamicCost(0, 0),
+                                    Enchantment.dynamicCost(0, 0),
+                                    1,
+                                    EquipmentSlotGroup.ANY))
+                            .exclusiveWith(enchantments.getOrThrow(create("voidbound_stamps"))));
+            register(context,
+                    ResourceKey.create(Registries.ENCHANTMENT,
+                            ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "greek/template/t_"+voidbound_stamps[i]))
+                    , Enchantment.enchantment(Enchantment.definition(
+                                    items.getOrThrow(ItemTags.TRIM_TEMPLATES),
+                                    items.getOrThrow(ItemTags.TRIM_TEMPLATES),
+                                    1,
+                                    1,
+                                    Enchantment.dynamicCost(0, 0),
+                                    Enchantment.dynamicCost(0, 0),
+                                    1,
+                                    EquipmentSlotGroup.ANY))
+                            .exclusiveWith(enchantments.getOrThrow(create("voidbound_templates"))));
+        }
     }
 
     private static TagKey<Enchantment> create(String name) {

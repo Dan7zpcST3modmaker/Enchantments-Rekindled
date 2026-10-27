@@ -1,6 +1,7 @@
 package net.dan7zpc.enchantments_rekindled.block.entity;
 
 import net.dan7zpc.enchantments_rekindled.block.ModBlocks;
+import net.dan7zpc.enchantments_rekindled.item.ModItemTagProvider;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
 import net.dan7zpc.enchantments_rekindled.recipe.EnchantmentsPedestalRecipe;
 import net.dan7zpc.enchantments_rekindled.recipe.EnchantmentsPedestalRecipeInput;
@@ -72,8 +73,9 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
     }
 
     private void bothBoundTick(Level level, BlockPos pos, BlockState blockState){
-
     }
+
+
 
     private void craft() {
         ItemStack stack = inventory.getStackInSlot(0);
@@ -94,26 +96,51 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
     }
 
     private ItemStack enchanterCraft(){
-        String template = getEnchantmentsTemplate();
+        ItemStack item = inventory.getStackInSlot(0);
+        if(item.is(ModItems.EXPERIOLITE.get()))return defaultEnchanterCraft();
+        else if (item.is(ModItems.VOIDOLITE.get()))return voidboundEnchanterCraft();
+        return item;
+    }
+
+    private ItemStack defaultEnchanterCraft(){
+        String template = getEnchantmentsTemplate(inventory.getStackInSlot(0));
         if (Objects.equals(template, "none")) return EnchantmentHelper.affixRandomExperienceStamp(inventory.getStackInSlot(0),level);
         return EnchantmentHelper.affixExperienceStamp(inventory.getStackInSlot(0),template,level);
     }
 
-    private String getEnchantmentsTemplate(){
+    private ItemStack voidboundEnchanterCraft(){
+        boolean hasEssence = hasVoidEssence();
+        if(!hasEssence)return inventory.getStackInSlot(0);
+        String template = getEnchantmentsTemplate(inventory.getStackInSlot(0));
+        if (Objects.equals(template, "none")) return EnchantmentHelper.affixRandomExperienceStamp(inventory.getStackInSlot(0),level);
+        return EnchantmentHelper.affixExperienceStamp(inventory.getStackInSlot(0),template,level);
+    }
+
+    private boolean hasVoidEssence(){
+        boolean toReturn = getVoidEssence(this.worldPosition.north());
+        toReturn |= getVoidEssence(this.worldPosition.west());
+        toReturn |= getVoidEssence(this.worldPosition.east());
+        toReturn |= getVoidEssence(this.worldPosition.south());
+        return toReturn;
+    }
+
+    private String getEnchantmentsTemplate(ItemStack stack){
         String to_return = "none";
-        to_return = getTemplate(this.worldPosition.north());
-        if (Objects.equals(to_return, "none")) to_return = getTemplate(this.worldPosition.west());
-        if (Objects.equals(to_return, "none")) to_return = getTemplate(this.worldPosition.east());
-        if (Objects.equals(to_return, "none")) to_return = getTemplate(this.worldPosition.south());
+        to_return = getTemplate(this.worldPosition.north(),stack);
+        if (Objects.equals(to_return, "none")) to_return = getTemplate(this.worldPosition.west(),stack);
+        if (Objects.equals(to_return, "none")) to_return = getTemplate(this.worldPosition.east(),stack);
+        if (Objects.equals(to_return, "none")) to_return = getTemplate(this.worldPosition.south(),stack);
         return to_return;
     }
 
-    private String getTemplate(BlockPos pos){
+    private String getTemplate(BlockPos pos, ItemStack stack){
         if (!isPedestal(pos)) return "none";
         assert level != null;
         BlockEntity blockEntity = level.getBlockEntity(pos);
         BaseContainerBlockEntity  baseContainerBlockEntity = (BaseContainerBlockEntity) blockEntity;
         ItemStack template = baseContainerBlockEntity.getItem(0);
+        if(!isTemplate(template)) return "none";
+        if(!EnchantmentHelper.isValidTemplateForStack(template,stack)) return "none";
         ItemEnchantments enchantments = template.get(DataComponents.ENCHANTMENTS);
         if(enchantments==null||enchantments.isEmpty())return"none";
         Holder<Enchantment> enchantment = enchantments.keySet().iterator().next();
@@ -128,6 +155,19 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
         return EnchantmentHelper.getStampNameFromTemplate(enchKey);
     }
 
+    private Boolean getVoidEssence(BlockPos pos){
+        if (!isPedestal(pos)) return false;
+        assert level != null;
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        BaseContainerBlockEntity  baseContainerBlockEntity = (BaseContainerBlockEntity) blockEntity;
+        ItemStack stack = baseContainerBlockEntity.getItem(0);
+        return stack.getItem() == ModItems.ABYSSAL_ESSENCE.get();
+    }
+
+    private boolean isTemplate(ItemStack stack) {
+        return stack.is(ModItemTagProvider.EXPERIENCE_STAMPS_TEMPLATES);
+    }
+
     private boolean isPedestal(BlockPos pos){
         assert level != null;
         BlockEntity blockEntity = level.getBlockEntity(pos);
@@ -139,7 +179,7 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
     }
 
     private boolean enchantable(ItemStack stack){
-        return stack.is(ModItems.EXPERIOLITE.get());
+        return stack.is(ModItemTagProvider.EXPERIENCE_STAMP_HOLDERS);
     }
 
     private boolean isCraftingFinished() {
@@ -220,8 +260,8 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
         Optional<RecipeHolder<EnchantmentsPedestalRecipe>> recipe = getCurrentRecipe();
         if(recipe.isEmpty()){
             boolean enchanted = item.isEnchanted();
-            boolean experiolite = item.is(ModItems.EXPERIOLITE);
-            if(enchanted || !experiolite){return false;}
+            boolean stamp_holder = item.is(ModItemTagProvider.EXPERIENCE_STAMP_HOLDERS);
+            if(enchanted || !stamp_holder){return false;}
             return true;
         }
         ItemStack output = recipe.get().value().outputItem();

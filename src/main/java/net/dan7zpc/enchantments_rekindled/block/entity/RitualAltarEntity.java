@@ -1,6 +1,7 @@
 package net.dan7zpc.enchantments_rekindled.block.entity;
 
 import net.dan7zpc.enchantments_rekindled.block.ModBlockTagProvider;
+import net.dan7zpc.enchantments_rekindled.data.ModCustomDataTypes;
 import net.dan7zpc.enchantments_rekindled.item.ModItemTagProvider;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
 import net.dan7zpc.enchantments_rekindled.particle.ModParticles;
@@ -147,6 +148,9 @@ public class RitualAltarEntity extends BlockEntity {
         SimpleContainer drops = new SimpleContainer(itemsPricedPairs.size());
         for (int i = 0; i < itemsPricedPairs.size(); i++) {
             ItemStack stack = new ItemStack((ItemLike) itemsPricedPairs.get(i).object());
+            if(stack.is(ModItems.VOID_TRINKET)){
+                stack.set(ModCustomDataTypes.STORED_POSITION, worldPosition.above());
+            }
             drops.addItem(stack);
         }
         assert level != null;

@@ -1,4 +1,4 @@
-package net.dan7zpc.enchantments_rekindled.util;
+package net.dan7zpc.enchantments_rekindled.util.color;
 
 public class ColorHelper {
     //idk how to do it properly so ill just make a custom util

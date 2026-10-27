@@ -32,4 +32,9 @@ public class ModItemTagProvider {
             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c","storage_blocks"));
     public static final TagKey<Item> ABYSS_BLACKLIST =
             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("enchantments_rekindled","abyss_blacklist"));
+
+    public static final TagKey<Item> EXPERIENCE_STAMP_HOLDERS =
+            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("enchantments_rekindled","experience_stamps_holder"));
+    public static final TagKey<Item> EXPERIENCE_STAMPS_TEMPLATES =
+            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("enchantments_rekindled","experience_stamps_templates"));
 }

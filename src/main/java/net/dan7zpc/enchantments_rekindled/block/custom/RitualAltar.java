@@ -58,6 +58,7 @@ public class RitualAltar extends BaseEntityBlock {
         RitualAltarEntity altarEntity = (RitualAltarEntity) level.getBlockEntity(pos);
         if(entity instanceof ItemEntity){
             assert altarEntity != null;
+            if(level.getBlockEntity(pos) instanceof RitualAltarEntity ritualAltarEntity){ritualAltarEntity.recalculateModules();}
             altarEntity.stepOn(level,pos,state,entity);
         }
     }

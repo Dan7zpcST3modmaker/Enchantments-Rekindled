@@ -25,6 +25,10 @@ public class ModBlockEntities {
             BLOCK_ENTITY_TYPE_DEFERRED_REGISTER.register("ritual_altar_be",() -> BlockEntityType.Builder.of(
                     RitualAltarEntity::new, ModBlocks.RITUAL_BLOCK.get()).build(null));
 
+    public static final Supplier<BlockEntityType<EventManagerEntity>> EVENT_MANAGER_ENTITY =
+            BLOCK_ENTITY_TYPE_DEFERRED_REGISTER.register("event_manager_entity",() -> BlockEntityType.Builder.of(
+                    EventManagerEntity::new, ModBlocks.LESSER_VOID_EVENTS_MANAGER.get()).build(null));
+
 
     public static void register(IEventBus eventBus){
         BLOCK_ENTITY_TYPE_DEFERRED_REGISTER.register(eventBus);

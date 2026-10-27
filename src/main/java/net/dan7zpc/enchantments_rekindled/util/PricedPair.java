@@ -1,6 +1,6 @@
 package net.dan7zpc.enchantments_rekindled.util;
 
-public record PricedPair(int cost, Object object) {
+public record PricedPair<T>(int cost, T object) {
     public boolean isAvailable(int budget){
         return budget >= cost;
     }

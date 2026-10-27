@@ -1,17 +1,19 @@
 package net.dan7zpc.enchantments_rekindled.util;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class PriceList {
-    private PricedPair[] catalogue;
+public class PriceList<T> {
+    private PricedPair<T>[] catalogue;
+    private int FullPrice = 0;
     public static PricedPair cheapestPricedPair = new PricedPair(Integer.MIN_VALUE,new Object());
-    public PriceList(PricedPair... pairs){
+    //@SafeVarargs
+    public PriceList(PricedPair<T>... pairs){
         catalogue = pairs;
         sort();
+        decidePrice();
     }
 
-    public PricedPair[] getEntries(){
+    public PricedPair<T>[] getEntries(){
         return this.catalogue;
     }
 
@@ -41,10 +43,21 @@ public class PriceList {
         }
     }
 
-    public PricedPair getMostExpensiveAvailable(int budget){
-        PricedPair top = cheapestPricedPair;
+    private void decidePrice(){
+        this.FullPrice = 0;
+        for(PricedPair item : catalogue){
+            this.FullPrice += item.cost();
+        }
+    }
+
+    public int getFullPrice(){
+        return this.FullPrice;
+    }
+
+    public PricedPair<T> getMostExpensiveAvailable(int budget){
+        PricedPair<T> top = cheapestPricedPair;
         for (int i = 0; i < catalogue.length; i++) {
-            PricedPair currentPair = catalogue[i];
+            PricedPair<T> currentPair = catalogue[i];
             if (currentPair.cost() > top.cost() && currentPair.isAvailable(budget))top = currentPair;
         }
         return top;

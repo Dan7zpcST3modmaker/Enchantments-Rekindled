@@ -1,10 +1,8 @@
 package net.dan7zpc.enchantments_rekindled.block;
 
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
-import net.dan7zpc.enchantments_rekindled.block.custom.Pedestal;
-import net.dan7zpc.enchantments_rekindled.block.custom.RitualAltar;
-import net.dan7zpc.enchantments_rekindled.block.custom.SoapyBlock;
-import net.dan7zpc.enchantments_rekindled.block.custom.TableOfKnowledge;
+import net.dan7zpc.enchantments_rekindled.abyss.ModVoidEventsSets;
+import net.dan7zpc.enchantments_rekindled.block.custom.*;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -40,9 +38,10 @@ public class ModBlocks {
                     .sound(SoundType.STONE)
             ));
     public static final DeferredBlock<Block> BROKER_STONE = registerBlock("broker_stone",
-            ()-> new Block(BlockBehaviour.Properties.of()
+            ()-> new BrokerBlock(BlockBehaviour.Properties.of()
                     .strength(-1)
                     .sound(SoundType.STONE)
+                    .randomTicks()
             ));
     public static final DeferredBlock<Block> ENCHANTMENTS_BRICKS = registerBlock("enchantments_bricks",
             ()-> new Block(BlockBehaviour.Properties.of()
@@ -74,7 +73,7 @@ public class ModBlocks {
             ()-> new RitualAltar(BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK)));
 
     public static final DeferredBlock<Block> ABYSSAL_BARRIER = registerBlock("abyssal_barrier",
-            ()-> new Block(BlockBehaviour.Properties.of()
+            ()-> new VoidBarrierBlock(BlockBehaviour.Properties.of()
                     .noLootTable()
                     .noTerrainParticles()
                     .speedFactor(0.3f)
@@ -82,7 +81,16 @@ public class ModBlocks {
                     .pushReaction(PushReaction.BLOCK)
                     .explosionResistance(9999)
                     .sound(SoundType.MUD)
+                    .randomTicks()
             ));
+    public static final DeferredBlock<Block> LESSER_VOID_EVENTS_MANAGER = registerBlock("lesser_void_events_manager",
+            ()-> new VoidEventManager(BlockBehaviour.Properties.of()
+                    .noLootTable()
+                    .air()
+                    .randomTicks()
+                    .noOcclusion()
+                    .noCollission()
+                    ,ModVoidEventsSets.lesserEvents));
 
     public static final DeferredBlock<Block> TABLE_OF_KNOWLEDGE = registerBlock("table_of_knowledge",
             ()-> new TableOfKnowledge(BlockBehaviour.Properties.of()

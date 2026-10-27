@@ -25,6 +25,16 @@ public class ModRecipes {
                 }
             });
 
+    public static final DeferredHolder<RecipeSerializer<?>,RecipeSerializer<VoidEnchantmentsPedestalRecipe>> VOID_ENCHANTMENTS_PEDESTAL_SERIALIZER =
+            SERIALIZERS.register("void_enchantments_pedestal",VoidEnchantmentsPedestalRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>,RecipeType<VoidEnchantmentsPedestalRecipe>> VOID_ENCHANTMENTS_PEDESTAL_TYPE =
+            TYPES.register("void_enchantments_pedestal", () -> new RecipeType<VoidEnchantmentsPedestalRecipe>() {
+                @Override
+                public String toString() {
+                    return "void_enchantments_pedestal";
+                }
+            });
+
     public static final DeferredHolder<RecipeSerializer<?>,RecipeSerializer<ItemCrushRecipe>> ITEM_CRUSH_SERIALIZER =
             SERIALIZERS.register("item_crush",ItemCrushRecipe.Serializer::new);
     public static final DeferredHolder<RecipeType<?>,RecipeType<ItemCrushRecipe>> ITEM_CRUSH_TYPE =

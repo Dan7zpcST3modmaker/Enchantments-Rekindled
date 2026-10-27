@@ -2,6 +2,7 @@ package net.dan7zpc.enchantments_rekindled;
 
 import net.dan7zpc.enchantments_rekindled.block.ModBlocks;
 import net.dan7zpc.enchantments_rekindled.block.entity.ModBlockEntities;
+import net.dan7zpc.enchantments_rekindled.data.ModCustomDataTypes;
 import net.dan7zpc.enchantments_rekindled.item.ModCreativeModeTabs;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
 import net.dan7zpc.enchantments_rekindled.particle.ModParticles;
@@ -39,6 +40,7 @@ public class EnchantmentsRekindled {
         ModRecipes.register(modEventBus);
 
         ModParticles.register(modEventBus);
+        ModCustomDataTypes.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

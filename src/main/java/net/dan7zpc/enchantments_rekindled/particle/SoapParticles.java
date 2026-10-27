@@ -1,13 +1,11 @@
 package net.dan7zpc.enchantments_rekindled.particle;
 
-import net.dan7zpc.enchantments_rekindled.util.ColorHelper;
+import net.dan7zpc.enchantments_rekindled.util.color.ColorHelper;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
 import java.util.Random;
 
 public class SoapParticles extends TextureSheetParticle {

@@ -3,10 +3,7 @@ package net.dan7zpc.enchantments_rekindled;
 import net.dan7zpc.enchantments_rekindled.block.entity.ModBlockEntities;
 import net.dan7zpc.enchantments_rekindled.block.entity.renderer.EnchantmentsPedestalEntityRenderer;
 import net.dan7zpc.enchantments_rekindled.block.entity.renderer.TableOfKnowledgeEntityRenderer;
-import net.dan7zpc.enchantments_rekindled.particle.ModParticles;
-import net.dan7zpc.enchantments_rekindled.particle.SoapParticles;
-import net.dan7zpc.enchantments_rekindled.particle.VoidPlopParticles;
-import net.dan7zpc.enchantments_rekindled.particle.VoidWaveParticles;
+import net.dan7zpc.enchantments_rekindled.particle.*;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -48,5 +45,6 @@ public class EnchantmentsRekindledClient {
         event.registerSpriteSet(ModParticles.SOAP_PARTICLES.get(), SoapParticles.Provider::new);
         event.registerSpriteSet(ModParticles.VOID_PLOP_PARTICLES.get(), VoidPlopParticles.Provider::new);
         event.registerSpriteSet(ModParticles.VOID_WAVE_PARTICLES.get(), VoidWaveParticles.Provider::new);
+        event.registerSpriteSet(ModParticles.BIGGER_VOID_WAVE_PARTICLES.get(), BiggerVoidWaveParticles.Provider::new);
     }
 }

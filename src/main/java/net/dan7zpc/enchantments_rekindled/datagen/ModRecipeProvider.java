@@ -47,6 +47,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('#', ModItems.EXPERIENCE_CRYSTAL.get())
                 .unlockedBy(getHasName(ModItems.EXPERIENCE_CRYSTAL.get()),has(ModItems.EXPERIENCE_CRYSTAL.get()))
                 .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModItems.VOIDOLITE.get())
+                .pattern("D#D")
+                .pattern("###")
+                .pattern("D#D")
+                .define('D', ModItems.NOCTETHER.get())
+                .define('#', ModItems.VOIDSTEEL_INGOT.get())
+                .unlockedBy(getHasName(ModItems.NOCTETHER.get()),has(ModItems.NOCTETHER.get()))
+                .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModBlocks.NYCRIT_BLOCK.get())
                 .pattern("###")
                 .pattern("###")

@@ -3,10 +3,7 @@ package net.dan7zpc.enchantments_rekindled.item;
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
 import net.dan7zpc.enchantments_rekindled.item.custom.FuelItem;
 import net.dan7zpc.enchantments_rekindled.item.custom.Reward;
-import net.dan7zpc.enchantments_rekindled.item.custom.item.CraftableByHandItem;
-import net.dan7zpc.enchantments_rekindled.item.custom.item.CrushRecipeItem;
-import net.dan7zpc.enchantments_rekindled.item.custom.item.CushableByHandItem;
-import net.dan7zpc.enchantments_rekindled.item.custom.item.QuickTooltipItem;
+import net.dan7zpc.enchantments_rekindled.item.custom.item.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
@@ -59,13 +56,19 @@ public class ModItems {
             ()-> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> VOID_TRINKET = ITEMS.register("void_trinket",
-            ()-> new Item(new Item.Properties()));
+            ()-> new VoidTrinket(new Item.Properties().stacksTo(1)));
 
     public static final DeferredItem<Item> VOIDSTEEL_INGOT = ITEMS.register("voidsteel_ingot",
             ()-> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> VOIDSTEEL_NUGGET = ITEMS.register("voidsteel_nugget",
             ()-> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> VOIDOLITE = ITEMS.register("voidolite",
+            ()-> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ABYSSAL_ESSENCE = ITEMS.register("abyssal_essence",
+            ()-> new Item(new Item.Properties()));
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
