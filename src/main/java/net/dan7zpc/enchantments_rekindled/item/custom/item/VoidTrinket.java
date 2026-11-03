@@ -43,14 +43,16 @@ public class VoidTrinket extends CustomModItem{
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        ResourceLocation dimResourceLocation = level.dimension().location();
         ItemStack stack = player.getItemInHand(usedHand);
+        BlockPos altarPos = stack.getOrDefault(ModCustomDataTypes.STORED_POSITION, new BlockPos(0,0,0));
+
+        ResourceLocation dimResourceLocation = level.dimension().location();
         if(dimResourceLocation.toString().equals("enchantments_rekindled:abyss_dim")) {
             level.playSound(player, player.blockPosition() , SoundEvents.PLAYER_SWIM, SoundSource.BLOCKS, 1f,1.8f);
-            BlockPos altarPos = stack.getOrDefault(ModCustomDataTypes.STORED_POSITION, new BlockPos(0,0,0));
             teleportPlayerToDim(player,Level.OVERWORLD,altarPos.getX()+0.5,altarPos.above().getY()+0.5,altarPos.getZ()+0.5);
             setPlayerGamemode(player, GameType.DEFAULT_MODE);
         }else {
+            if(altarPos.distToCenterSqr(player.getX(), player.getY(), player.getZ()) > 100){return InteractionResultHolder.fail(stack);}
             level.playSound(player, player.blockPosition() , SoundEvents.PLAYER_SWIM, SoundSource.BLOCKS, 1f,0.2f);
             teleportPlayerToDim((Entity) player, ResourceKey.create(Registries.DIMENSION,ResourceLocation.parse("enchantments_rekindled:abyss_dim")),player.getX(),216,player.getZ());
             setPlayerGamemode(player,GameType.ADVENTURE);

@@ -17,7 +17,7 @@ public class EventManagerEntity extends BlockEntity {
     public void tick(Level level, BlockPos pos, BlockState blockState){
         RandomSource random = level.getRandom();
         if(level instanceof ServerLevel serverLevel){
-            if(random.nextInt(15)>13) spawnVoidWaves(pos.below(),serverLevel);
+            if(random.nextInt(15)>11) spawnVoidWaves(pos.below(),serverLevel);
         }
     }
 

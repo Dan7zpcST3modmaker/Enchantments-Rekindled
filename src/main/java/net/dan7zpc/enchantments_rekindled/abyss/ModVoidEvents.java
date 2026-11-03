@@ -7,4 +7,7 @@ public class ModVoidEvents {
     public static final VoidEvent broker = new VoidEvent("broker_spawn", new ResourceLocation[]{
             ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID,"broker")
     });
+    public static final VoidEvent bottle = new VoidEvent("fountain_spawn", new ResourceLocation[]{
+            ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID,"fountain")
+    });
 }

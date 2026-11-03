@@ -20,6 +20,14 @@ public class EnchantmentHelper {
     private static Random rand = new Random();
     private static final Map<ResourceLocation,String> TEMPLATE_TO_ID_MAP = new HashMap<>();
     private static final Map<ItemLike,ItemLike> HOLDER_TO_TEMPLATE_MAP = new HashMap<>();
+    private static final String[] voidbound_stamps = {
+            "alpha", "beta", "gamma", "delta",
+            "epsilon", "zeta", "eta", "theta",
+            "iota", "kappa", "lambda", "mu",
+            "nu", "xi", "omicron", "pi",
+            "rho", "sigma", "tau", "upsilon",
+            "phi", "chi", "psi", "omega"
+    };
     static {
         for (int i = 0; i < 26; i++) {
             ResourceLocation enchantmentTemplateKey = ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "galactic/template/t_" + (char)('a'+i));
@@ -29,15 +37,6 @@ public class EnchantmentHelper {
                     ""+(char)('a'+i)
             );
         }
-
-        String[] voidbound_stamps = {
-                "alpha", "beta", "gamma", "delta",
-                "epsilon", "zeta", "eta", "theta",
-                "iota", "kappa", "lambda", "mu",
-                "nu", "xi", "omicron", "pi",
-                "rho", "sigma", "tau", "upsilon",
-                "phi", "chi", "psi", "omega"
-        };
 
         for (int i = 0; i < voidbound_stamps.length; i++) {
             ResourceLocation enchantmentTemplateKey = ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "greek/template/t_"+voidbound_stamps[i]);
@@ -79,8 +78,19 @@ public class EnchantmentHelper {
         return affixExperienceStamp(stack, randomExperienceStampId(),world);
     }
 
+    public static ItemStack affixVoidboundStamp(ItemStack stack, String id, Level world){
+        return applyEnchantment(stack,ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID,"greek/"+id),1,world);
+    }
+    public static ItemStack affixRandomVoidboundStamp(ItemStack stack, Level world){
+        return affixVoidboundStamp(stack, randomVoidboundStampId(),world);
+    }
+
     private static String randomExperienceStampId() {
         return String.valueOf((char)('a'+ rand.nextInt(26)));
+    }
+
+    private static String randomVoidboundStampId() {
+        return voidbound_stamps[rand.nextInt(24)];
     }
 
     public static String getStampNameFromTemplate(ResourceLocation enchKey) {

@@ -15,11 +15,11 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public record TableOfKnowledgeRecipe(Ingredient inputItem,ItemStack rune1,ItemStack rune2,ItemStack rune3,ItemStack rune4, ItemStack outputItem) implements Recipe<TableOfKnowledgeRecipeInput> {
+public record TableOfKnowledgeRecipe(ItemStack inputItem,ItemStack rune1,ItemStack rune2,ItemStack rune3,ItemStack rune4, ItemStack outputItem) implements Recipe<TableOfKnowledgeRecipeInput> {
     @Override
     public @NotNull NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.create();
-        list.add(inputItem);
+        list.add(Ingredient.of(inputItem));
         list.add(Ingredient.of(rune1));
         list.add(Ingredient.of(rune2));
         list.add(Ingredient.of(rune3));
@@ -32,7 +32,8 @@ public record TableOfKnowledgeRecipe(Ingredient inputItem,ItemStack rune1,ItemSt
         if(level.isClientSide()){
             return false;
         }
-        boolean inputMatch = inputItem.test(input.getItem(0));
+        //inputItem.test(input.getItem(0));
+        boolean inputMatch = Ingredient.of(inputItem).test(input.getItem(0)) && sameEnchants(inputItem,input.getItem(0));
         if (!inputMatch){
             return false;
         }
@@ -92,7 +93,7 @@ public record TableOfKnowledgeRecipe(Ingredient inputItem,ItemStack rune1,ItemSt
 
     public static class Serializer implements RecipeSerializer<TableOfKnowledgeRecipe>{
         public static final MapCodec<TableOfKnowledgeRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(TableOfKnowledgeRecipe::inputItem),
+                ItemStack.CODEC.fieldOf("ingredient").forGetter(TableOfKnowledgeRecipe::inputItem),
                 ItemStack.CODEC.fieldOf("rune1").forGetter(TableOfKnowledgeRecipe::rune1),
                 ItemStack.CODEC.fieldOf("rune2").forGetter(TableOfKnowledgeRecipe::rune2),
                 ItemStack.CODEC.fieldOf("rune3").forGetter(TableOfKnowledgeRecipe::rune3),
@@ -102,7 +103,7 @@ public record TableOfKnowledgeRecipe(Ingredient inputItem,ItemStack rune1,ItemSt
 
         public static final StreamCodec<RegistryFriendlyByteBuf, TableOfKnowledgeRecipe> STREAM_CODEC =
                 StreamCodec.composite(
-                        Ingredient.CONTENTS_STREAM_CODEC, TableOfKnowledgeRecipe::inputItem,
+                        ItemStack.STREAM_CODEC, TableOfKnowledgeRecipe::inputItem,
                         ItemStack.STREAM_CODEC, TableOfKnowledgeRecipe::rune1,
                         ItemStack.STREAM_CODEC, TableOfKnowledgeRecipe::rune2,
                         ItemStack.STREAM_CODEC, TableOfKnowledgeRecipe::rune3,

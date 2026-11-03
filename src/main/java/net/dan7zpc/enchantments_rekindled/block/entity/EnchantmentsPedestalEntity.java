@@ -112,8 +112,9 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
         boolean hasEssence = hasVoidEssence();
         if(!hasEssence)return inventory.getStackInSlot(0);
         String template = getEnchantmentsTemplate(inventory.getStackInSlot(0));
-        if (Objects.equals(template, "none")) return EnchantmentHelper.affixRandomExperienceStamp(inventory.getStackInSlot(0),level);
-        return EnchantmentHelper.affixExperienceStamp(inventory.getStackInSlot(0),template,level);
+        spendVoidEssence();
+        if (Objects.equals(template, "none")) return EnchantmentHelper.affixRandomVoidboundStamp(inventory.getStackInSlot(0),level);
+        return EnchantmentHelper.affixVoidboundStamp(inventory.getStackInSlot(0),template,level);
     }
 
     private boolean hasVoidEssence(){
@@ -122,6 +123,20 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
         toReturn |= getVoidEssence(this.worldPosition.east());
         toReturn |= getVoidEssence(this.worldPosition.south());
         return toReturn;
+    }
+
+    private void spendVoidEssence(){
+        if (getVoidEssence(this.worldPosition.north())) {drainEssenceFrom(this.worldPosition.north());return;}
+        if (getVoidEssence(this.worldPosition.west())) {drainEssenceFrom(this.worldPosition.west());return;}
+        if (getVoidEssence(this.worldPosition.east())) {drainEssenceFrom(this.worldPosition.east());return;}
+        if (getVoidEssence(this.worldPosition.south())) {drainEssenceFrom(this.worldPosition.south());return;}
+    }
+
+    private void drainEssenceFrom(BlockPos pos){
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        BaseContainerBlockEntity  baseContainerBlockEntity = (BaseContainerBlockEntity) blockEntity;
+        ItemStack stack = baseContainerBlockEntity.getItem(0);
+        stack.shrink(1);
     }
 
     private String getEnchantmentsTemplate(ItemStack stack){
@@ -163,6 +178,7 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
         ItemStack stack = baseContainerBlockEntity.getItem(0);
         return stack.getItem() == ModItems.ABYSSAL_ESSENCE.get();
     }
+
 
     private boolean isTemplate(ItemStack stack) {
         return stack.is(ModItemTagProvider.EXPERIENCE_STAMPS_TEMPLATES);
@@ -261,6 +277,8 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
         if(recipe.isEmpty()){
             boolean enchanted = item.isEnchanted();
             boolean stamp_holder = item.is(ModItemTagProvider.EXPERIENCE_STAMP_HOLDERS);
+            boolean voidolite = item.is(ModItems.VOIDOLITE);
+            if(voidolite && !hasVoidEssence()){return false;}
             if(enchanted || !stamp_holder){return false;}
             return true;
         }

@@ -47,6 +47,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('#', ModItems.EXPERIENCE_CRYSTAL.get())
                 .unlockedBy(getHasName(ModItems.EXPERIENCE_CRYSTAL.get()),has(ModItems.EXPERIENCE_CRYSTAL.get()))
                 .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModItems.EXPERIENCE_CRYSTAL.get(), 4)
+                .pattern("LLL")
+                .pattern("L#L")
+                .pattern("LSL")
+                .define('L', Items.LAPIS_LAZULI)
+                .define('#', ModItems.EXPERIENCE_CRYSTAL.get())
+                .define('S', ModBlocks.ENCHANTMENTS_STONE.get())
+                .unlockedBy(getHasName(ModItems.EXPERIENCE_CRYSTAL.get()),has(ModItems.EXPERIENCE_CRYSTAL.get()))
+                .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModItems.VOIDOLITE.get())
                 .pattern("D#D")
                 .pattern("###")

@@ -1,6 +1,8 @@
 package net.dan7zpc.enchantments_rekindled.particle;
 
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.dan7zpc.enchantments_rekindled.util.color.ColorHelper;
+import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -23,9 +25,16 @@ public class SoapParticles extends TextureSheetParticle {
         this.gCol = color[1];
         this.bCol = color[2];
 
-        float size =this.lifetime-this.age;
+        float size = (float) (this.lifetime - this.age) /40;
         this.quadSize = size;
         this.setSize(size,size);
+    }
+
+    @Override
+    public void render(VertexConsumer buffer, Camera renderInfo, float partialTicks) {
+        float size = (float) (this.lifetime - this.age) /40;
+        this.quadSize = size;
+        super.render(buffer, renderInfo, partialTicks);
     }
 
     @Override

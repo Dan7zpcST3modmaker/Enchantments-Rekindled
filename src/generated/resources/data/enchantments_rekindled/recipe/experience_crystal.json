@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "enchantments_rekindled:experience_crystal"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "S": {
+      "item": "enchantments_rekindled:enchantments_stone"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "L#L",
+    "LSL"
+  ],
+  "result": {
+    "count": 4,
+    "id": "enchantments_rekindled:experience_crystal"
+  }
+}

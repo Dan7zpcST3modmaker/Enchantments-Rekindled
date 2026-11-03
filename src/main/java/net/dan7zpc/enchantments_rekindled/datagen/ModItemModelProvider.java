@@ -27,6 +27,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BROKER_SHARD.get());
         basicItem(ModItems.NOCTETHER.get());
         basicItem(ModItems.ABYSSAL_JAM.get());
+        basicItem(ModItems.ABYSSAL_ESSENCE.get());
         basicItem(ModItems.VOIDSTEEL_INGOT.get());
         basicItem(ModItems.VOIDSTEEL_NUGGET.get());
         basicItem(ModItems.VOIDOLITE.get());

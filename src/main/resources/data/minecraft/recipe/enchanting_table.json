@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "replace": true,
+  "show_notification": false,
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:barrier"
+    }
+  },
+  "pattern": [
+    "B B",
+    " B ",
+    "B B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:enchanting_table"
+  }
+}

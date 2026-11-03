@@ -49,6 +49,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.VOID_TRINKET);
                         output.accept(ModBlocks.BROKER_STONE);
                         output.accept(ModItems.VOIDOLITE);
+                        output.accept(ModItems.ABYSSAL_ESSENCE);
                         output.accept(ModBlocks.ABYSSAL_BARRIER);
                     }).build());
 

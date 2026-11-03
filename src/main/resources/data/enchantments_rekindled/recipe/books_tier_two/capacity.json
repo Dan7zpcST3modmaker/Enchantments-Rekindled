@@ -1,0 +1,59 @@
+{
+  "type": "enchantments_rekindled:table_of_knowledge",
+  "ingredient": {
+    "id": "enchantments_rekindled:voidolite",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:greek/pi": 1
+      }
+    },
+    "count": 1
+  },
+  "rune1": {
+    "id": "enchantments_rekindled:experiolite",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:galactic/c": 1
+      }
+    },
+    "count": 1
+  },
+  "rune2": {
+    "id": "enchantments_rekindled:experiolite",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:galactic/a": 1
+      }
+    },
+    "count": 1
+  },
+  "rune3": {
+    "id": "enchantments_rekindled:experiolite",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:galactic/t": 1
+      }
+    },
+    "count": 1
+  },
+  "rune4": {
+    "id": "enchantments_rekindled:experiolite",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:galactic/y": 1
+      }
+    },
+    "count": 1
+  },
+  "result": {
+    "id": "minecraft:enchanted_book",
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "create:capacity": 1
+        }
+      }
+    },
+    "count": 1
+  }
+}
