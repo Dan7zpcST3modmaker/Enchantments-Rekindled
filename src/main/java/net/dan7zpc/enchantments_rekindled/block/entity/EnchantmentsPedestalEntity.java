@@ -1,5 +1,6 @@
 package net.dan7zpc.enchantments_rekindled.block.entity;
 
+import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
 import net.dan7zpc.enchantments_rekindled.block.ModBlocks;
 import net.dan7zpc.enchantments_rekindled.item.ModItemTagProvider;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
@@ -150,11 +151,13 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
 
     private String getTemplate(BlockPos pos, ItemStack stack){
         if (!isPedestal(pos)) return "none";
+        //EnchantmentsRekindled.LOGGER.info("getting template...");
         assert level != null;
         BlockEntity blockEntity = level.getBlockEntity(pos);
         BaseContainerBlockEntity  baseContainerBlockEntity = (BaseContainerBlockEntity) blockEntity;
         ItemStack template = baseContainerBlockEntity.getItem(0);
         if(!isTemplate(template)) return "none";
+        //EnchantmentsRekindled.LOGGER.info("is template...");
         if(!EnchantmentHelper.isValidTemplateForStack(template,stack)) return "none";
         ItemEnchantments enchantments = template.get(DataComponents.ENCHANTMENTS);
         if(enchantments==null||enchantments.isEmpty())return"none";

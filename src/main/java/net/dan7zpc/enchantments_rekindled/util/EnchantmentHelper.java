@@ -47,7 +47,7 @@ public class EnchantmentHelper {
             );
         }
 
-        HOLDER_TO_TEMPLATE_MAP.put(ModItems.EXPERIOLITE.get(),ModItems.ETHERIUM_RUNIC_TEMPLATE);
+        HOLDER_TO_TEMPLATE_MAP.put(ModItems.EXPERIOLITE.get(),ModItems.ETHERIUM_RUNIC_TEMPLATE.get());
     }
 
     public static ItemStack applyEnchantment(ItemStack stack, ResourceLocation id, int level, Level world){
@@ -99,6 +99,8 @@ public class EnchantmentHelper {
 
     public static boolean isValidTemplateForStack(ItemStack template, ItemStack stack) {
         ItemLike itemLike = HOLDER_TO_TEMPLATE_MAP.getOrDefault(stack.getItem(), ItemStack.EMPTY.getItem());
+        //EnchantmentsRekindled.LOGGER.debug(itemLike.asItem().getName(new ItemStack(itemLike)).getString());
+        //EnchantmentsRekindled.LOGGER.info("meow");
         return (itemLike == template.getItem());
     }
 }
