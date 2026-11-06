@@ -91,6 +91,11 @@ public class ModBlocks {
                     .noOcclusion()
                     .noCollission()
                     ,ModVoidEventsSets.lesserEvents));
+    public static final DeferredBlock<Block> ABYSSAL_FOUNTAIN_ROOT = registerBlock("abyssal_fountain_root",
+            ()-> new AbyssalFountainRoot(BlockBehaviour.Properties.of()
+                    .noLootTable()
+                    .noOcclusion()
+                    .noCollission()));
 
     public static final DeferredBlock<Block> TABLE_OF_KNOWLEDGE = registerBlock("table_of_knowledge",
             ()-> new TableOfKnowledge(BlockBehaviour.Properties.of()

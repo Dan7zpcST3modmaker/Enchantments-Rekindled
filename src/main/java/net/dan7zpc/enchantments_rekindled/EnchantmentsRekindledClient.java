@@ -46,5 +46,6 @@ public class EnchantmentsRekindledClient {
         event.registerSpriteSet(ModParticles.VOID_PLOP_PARTICLES.get(), VoidPlopParticles.Provider::new);
         event.registerSpriteSet(ModParticles.VOID_WAVE_PARTICLES.get(), VoidWaveParticles.Provider::new);
         event.registerSpriteSet(ModParticles.BIGGER_VOID_WAVE_PARTICLES.get(), BiggerVoidWaveParticles.Provider::new);
+        event.registerSpriteSet(ModParticles.ABYSSAL_FOUNTAIN_PARTICLES.get(), AbyssalFountainParticles.Provider::new);
     }
 }

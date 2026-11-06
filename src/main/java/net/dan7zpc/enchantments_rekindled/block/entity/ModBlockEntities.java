@@ -28,6 +28,9 @@ public class ModBlockEntities {
     public static final Supplier<BlockEntityType<EventManagerEntity>> EVENT_MANAGER_ENTITY =
             BLOCK_ENTITY_TYPE_DEFERRED_REGISTER.register("event_manager_entity",() -> BlockEntityType.Builder.of(
                     EventManagerEntity::new, ModBlocks.LESSER_VOID_EVENTS_MANAGER.get()).build(null));
+    public static final Supplier<BlockEntityType<AbyssalFountainEntity>> ABYSSAL_FOUNTAIN_ENTITY =
+            BLOCK_ENTITY_TYPE_DEFERRED_REGISTER.register("abyssal_fountain_entity",() -> BlockEntityType.Builder.of(
+                    AbyssalFountainEntity::new, ModBlocks.ABYSSAL_FOUNTAIN_ROOT.get()).build(null));
 
 
     public static void register(IEventBus eventBus){

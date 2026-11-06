@@ -25,6 +25,9 @@ public class ModParticles {
     public static final Supplier<SimpleParticleType> BIGGER_VOID_WAVE_PARTICLES =
             PARTICLE_TYPES.register("bigger_void_wave_particles", () -> new SimpleParticleType(true));
 
+    public static final Supplier<SimpleParticleType> ABYSSAL_FOUNTAIN_PARTICLES =
+            PARTICLE_TYPES.register("abyssal_fountain_particles", () -> new SimpleParticleType(true));
+
     public static final void register(IEventBus eventBus){
         PARTICLE_TYPES.register(eventBus);
     }
