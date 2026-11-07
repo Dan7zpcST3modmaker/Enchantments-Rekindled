@@ -1,6 +1,8 @@
 package net.dan7zpc.enchantments_rekindled.particle;
 
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
+import net.minecraft.client.particle.FlyTowardsPositionParticle;
+import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
