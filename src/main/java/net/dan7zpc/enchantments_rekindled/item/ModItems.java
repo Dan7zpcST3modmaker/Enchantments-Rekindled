@@ -67,7 +67,7 @@ public class ModItems {
     public static final DeferredItem<Item> VOIDOLITE = ITEMS.register("voidolite",
             ()-> new QuickTooltipItem(new Item.Properties(),"voidolite","voidolite_shift",""));
     public static final DeferredItem<Item> ABYSSAL_ESSENCE = ITEMS.register("abyssal_essence",
-            ()-> new Item(new Item.Properties()));
+            ()-> new QuickTooltipItem(new Item.Properties(),"abyssal_essence","",""));
 
 
     public static void register(IEventBus eventBus){

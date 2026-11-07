@@ -58,7 +58,7 @@ public class RitualAltar extends BaseEntityBlock {
         RitualAltarEntity altarEntity = (RitualAltarEntity) level.getBlockEntity(pos);
         if(entity instanceof ItemEntity){
             assert altarEntity != null;
-            if(level.getBlockEntity(pos) instanceof RitualAltarEntity ritualAltarEntity){ritualAltarEntity.recalculateModules();}
+            altarEntity.recalculateModules();
             altarEntity.stepOn(level,pos,state,entity);
         }
     }
@@ -67,6 +67,7 @@ public class RitualAltar extends BaseEntityBlock {
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         tooltip(stack,context,tooltipComponents,tooltipFlag,"ritual_block");
         shiftTooltip(stack,context,tooltipComponents,tooltipFlag,"ritual_block_shift");
+        controlTooltip(stack,context,tooltipComponents,tooltipFlag,"ritual_block_control");
     }
 
     public void tooltip(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, String translationKey){

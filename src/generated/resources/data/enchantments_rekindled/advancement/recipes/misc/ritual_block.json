@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:ritual_block_from_gold_block_stonecutting"
+        "recipe": "enchantments_rekindled:ritual_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:ritual_block_from_gold_block_stonecutting"
+      "enchantments_rekindled:ritual_block"
     ]
   }
 }

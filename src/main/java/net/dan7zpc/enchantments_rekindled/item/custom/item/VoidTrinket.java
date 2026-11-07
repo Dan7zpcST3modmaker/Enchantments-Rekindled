@@ -22,9 +22,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 
-public class VoidTrinket extends CustomModItem{
+public class VoidTrinket extends QuickTooltipItem{
     public VoidTrinket(Properties properties) {
-        super(properties);
+        super(properties,"void_trinket","","");
     }
 
     @Override

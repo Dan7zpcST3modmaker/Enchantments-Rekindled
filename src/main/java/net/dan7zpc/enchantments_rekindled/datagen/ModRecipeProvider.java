@@ -120,7 +120,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('E', ModBlocks.ENCHANTMENTS_STONE)
                 .unlockedBy(getHasName(ModBlocks.ENCHANTMENTS_STONE.get()),has(ModBlocks.ENCHANTMENTS_STONE.get()))
                 .save(recipeOutput);
-        stonecutterResultFromBase(recipeOutput,RecipeCategory.BUILDING_BLOCKS,ModBlocks.RITUAL_BLOCK.get(),Items.GOLD_BLOCK);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModBlocks.RITUAL_BLOCK.get())
+                .pattern("PEP")
+                .pattern("EGE")
+                .pattern("PEP")
+                .define('E', ModItems.ETHERIUM)
+                .define('P', ModItems.EXPERIENCE_PRISM)
+                .define('G', Items.GOLD_BLOCK)
+                .unlockedBy(getHasName(Items.GOLD_BLOCK),has(Items.GOLD_BLOCK))
+                .save(recipeOutput);
+
+        //stonecutterResultFromBase(recipeOutput,RecipeCategory.BUILDING_BLOCKS,ModBlocks.RITUAL_BLOCK.get(),Items.GOLD_BLOCK);
     }
 
     protected void furnace_recipe(RecipeOutput recipeOutput, ItemLike in, ItemLike out, FurnaceRecipeType[] furnaceRecipeTypes){

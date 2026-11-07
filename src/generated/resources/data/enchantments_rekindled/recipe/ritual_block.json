@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "enchantments_rekindled:etherium"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "P": {
+      "item": "enchantments_rekindled:experience_prism"
+    }
+  },
+  "pattern": [
+    "PEP",
+    "EGE",
+    "PEP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enchantments_rekindled:ritual_block"
+  }
+}
