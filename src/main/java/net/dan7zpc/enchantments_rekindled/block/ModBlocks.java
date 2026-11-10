@@ -87,7 +87,6 @@ public class ModBlocks {
             ()-> new VoidEventManager(BlockBehaviour.Properties.of()
                     .noLootTable()
                     .air()
-                    .randomTicks()
                     .noOcclusion()
                     .noCollission()
                     ,ModVoidEventsSets.lesserEvents));

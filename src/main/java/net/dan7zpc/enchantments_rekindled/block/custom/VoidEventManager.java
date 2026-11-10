@@ -28,22 +28,6 @@ public class VoidEventManager extends BaseEntityBlock {
         this.eventsSet = eventsSet;
     }
 
-
-    @Override
-    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        spawnVoidWaves(pos.below(),level);
-        if(random.nextInt(2)>1) return;
-        playsound(level,pos);
-        eventsSet.call(level,pos,random);
-    }
-
-    private void playsound(Level level, BlockPos worldPosition){
-        level.playSound(level.getNearestPlayer(
-                worldPosition.getX() +0.5, worldPosition.getY()+0.5, worldPosition.getZ()+0.5,
-                15,true
-        ),worldPosition, SoundEvents.PLAYER_SWIM, SoundSource.BLOCKS, 1f,0.2f);
-    }
-
     private void spawnVoidWaves(BlockPos pos,ServerLevel serverLevel) {
         serverLevel.sendParticles(ModParticles.BIGGER_VOID_WAVE_PARTICLES.get(), pos.getX()+0.5f,pos.above().getY(),pos.getZ()+0.5f,2,0,0,0,0);
     }

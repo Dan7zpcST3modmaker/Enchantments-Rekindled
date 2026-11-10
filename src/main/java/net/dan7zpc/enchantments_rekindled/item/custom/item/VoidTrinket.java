@@ -36,6 +36,7 @@ public class VoidTrinket extends QuickTooltipItem{
             if (amount>1){return;}
             BlockPos altarPos = stack.getOrDefault(ModCustomDataTypes.STORED_POSITION, new BlockPos(0,0,0));
             teleportPlayerToDim(entity,Level.OVERWORLD,altarPos.getX()+0.5,altarPos.above().getY()+0.5,altarPos.getZ()+0.5);
+            setPlayerGamemode(entity, GameType.DEFAULT_MODE);
             stack.setCount(0);
         }
         super.inventoryTick(stack, level, entity, slotId, isSelected);
@@ -86,12 +87,12 @@ public class VoidTrinket extends QuickTooltipItem{
 
     @Override
     public int getBarWidth(ItemStack stack) {
-        return Math.round(13.0F * Mth.clamp(getRemainingPower(stack) / ((float) 2400), 0, 1));
+        return Math.round(13.0F * Mth.clamp(getRemainingPower(stack) / ((float) 4800), 0, 1));
         //return stack.getOrDefault(ModCustomDataTypes.STORED_POWER,2400)*16/2400;
     }
 
     public int getRemainingPower(ItemStack stack){
-        return stack.getOrDefault(ModCustomDataTypes.STORED_POWER,2400);
+        return stack.getOrDefault(ModCustomDataTypes.STORED_POWER,4800);
     }
 
     @Override
