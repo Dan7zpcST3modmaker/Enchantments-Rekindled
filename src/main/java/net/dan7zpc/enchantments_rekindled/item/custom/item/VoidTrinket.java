@@ -31,7 +31,7 @@ public class VoidTrinket extends QuickTooltipItem{
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         ResourceLocation dimResourceLocation = level.dimension().location();
         if(dimResourceLocation.toString().equals("enchantments_rekindled:abyss_dim")){
-            int amount = stack.getOrDefault(ModCustomDataTypes.STORED_POWER,2400);
+            int amount = stack.getOrDefault(ModCustomDataTypes.STORED_POWER,4800);
             stack.set(ModCustomDataTypes.STORED_POWER,amount-1);
             if (amount>1){return;}
             BlockPos altarPos = stack.getOrDefault(ModCustomDataTypes.STORED_POSITION, new BlockPos(0,0,0));

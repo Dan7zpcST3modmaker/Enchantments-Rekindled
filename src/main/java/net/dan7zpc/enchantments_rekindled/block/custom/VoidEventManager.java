@@ -28,10 +28,6 @@ public class VoidEventManager extends BaseEntityBlock {
         this.eventsSet = eventsSet;
     }
 
-    private void spawnVoidWaves(BlockPos pos,ServerLevel serverLevel) {
-        serverLevel.sendParticles(ModParticles.BIGGER_VOID_WAVE_PARTICLES.get(), pos.getX()+0.5f,pos.above().getY(),pos.getZ()+0.5f,2,0,0,0,0);
-    }
-
     public static final MapCodec<VoidEventManager> CODEC = simpleCodec((properties1 -> new VoidEventManager(properties1, ModVoidEventsSets.lesserEvents)));
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {

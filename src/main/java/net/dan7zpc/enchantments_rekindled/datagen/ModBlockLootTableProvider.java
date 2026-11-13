@@ -26,6 +26,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.TABLE_OF_KNOWLEDGE.get());
         dropSelf(ModBlocks.RITUAL_BLOCK.get());
         dropSelf(ModBlocks.BROKER_STONE.get());
+        dropSelf(ModBlocks.BROKERITE.get());
 
         dropOre(ModBlocks.NYCRIT_ORE.get(),ModItems.NYCRIT.get());
         dropOre(ModBlocks.DEEPSLATE_NYCRIT_ORE.get(),ModItems.NYCRIT.get());

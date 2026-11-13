@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "enchantments_rekindled:brokerite"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "enchantments_rekindled:broker_shard"
+  }
+}

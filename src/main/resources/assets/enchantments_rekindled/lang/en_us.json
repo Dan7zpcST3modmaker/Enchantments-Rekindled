@@ -32,6 +32,7 @@
   "block.enchantments_rekindled.soap_stone": "Soap Stone",
   "block.enchantments_rekindled.ritual_block": "Ritual Stone",
   "block.enchantments_rekindled.broker_stone": "Broker Stone",
+  "block.enchantments_rekindled.brokerite": "Brokerite",
 
   "tooltip.enchantments_rekindled.crushable_by_hand": "§7[Shift+Right-click]§r to crush",
   "tooltip.enchantments_rekindled.craftable_by_hand": "§7[Shift+Right-click]§r to crush",

@@ -48,6 +48,11 @@ public class ModBlocks {
                     .strength(4)
                     .sound(SoundType.STONE)
             ));
+    public static final DeferredBlock<Block> BROKERITE = registerBlock("brokerite",
+            ()-> new Block(BlockBehaviour.Properties.of()
+                    .strength(4)
+                    .sound(SoundType.STONE)
+            ));
     public static final DeferredBlock<Block> SOAP_STONE= registerBlock("soap_stone",
             ()-> new SoapyBlock(BlockBehaviour.Properties.of()
                     .strength(4)

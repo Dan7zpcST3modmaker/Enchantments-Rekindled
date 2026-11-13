@@ -32,6 +32,7 @@
   "block.enchantments_rekindled.soap_stone": "Мыльный камень",
   "block.enchantments_rekindled.ritual_block": "Ритуальный камень",
   "block.enchantments_rekindled.broker_stone": "Камень брокера",
+  "block.enchantments_rekindled.brokerite": "Брокерит",
 
   "tooltip.enchantments_rekindled.crushable_by_hand": "§7[Shift+ПКМ]§r чтобы разбить",
   "tooltip.enchantments_rekindled.craftable_by_hand": "§7[Shift+ПКМ]§r чтобы сжать",

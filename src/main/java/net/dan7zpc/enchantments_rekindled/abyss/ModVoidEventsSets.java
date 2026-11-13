@@ -14,8 +14,8 @@ public class ModVoidEventsSets {
             .setIgnoreEntities(false)
             .addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
 
-    public static final VoidEventsSet lesserEvents = new VoidEventsSet(new PriceList<VoidEvent>(
-            new PricedPair<VoidEvent>(2, ModVoidEvents.broker),
-            new PricedPair<VoidEvent>(1, ModVoidEvents.bottle)
+    public static final VoidEventsSet lesserEvents = new VoidEventsSet(new PriceList<>(
+            new PricedPair<>(2, ModVoidEvents.broker),
+            new PricedPair<>(1, ModVoidEvents.fountain)
     ));
 }
