@@ -34,7 +34,7 @@ public class ModBlocks {
             ));
     public static final DeferredBlock<Block> ENCHANTMENTS_STONE = registerBlock("enchantments_stone",
             ()-> new Block(BlockBehaviour.Properties.of()
-                    .strength(4)
+                    .strength(2)
                     .sound(SoundType.STONE)
             ));
     public static final DeferredBlock<Block> BROKER_STONE = registerBlock("broker_stone",
@@ -45,7 +45,7 @@ public class ModBlocks {
             ));
     public static final DeferredBlock<Block> ENCHANTMENTS_BRICKS = registerBlock("enchantments_bricks",
             ()-> new Block(BlockBehaviour.Properties.of()
-                    .strength(4)
+                    .strength(2)
                     .sound(SoundType.STONE)
             ));
     public static final DeferredBlock<Block> BROKERITE = registerBlock("brokerite",
