@@ -97,7 +97,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('G', Items.GUNPOWDER)
                 .unlockedBy(getHasName(ModBlocks.ENCHANTMENTS_PEDESTAL.get()),has(ModBlocks.ENCHANTMENTS_PEDESTAL.get()))
                 .save(recipeOutput);
-        storage_block_2_by_2(RecipeCategory.BUILDING_BLOCKS,recipeOutput,ModBlocks.ENCHANTMENTS_STONE.get(),ModBlocks.ENCHANTMENTS_BRICKS.get());
+        brick_recipe(recipeOutput,ModBlocks.ENCHANTMENTS_STONE.get(),ModBlocks.ENCHANTMENTS_BRICKS.get());
         storage_block_2_by_2(RecipeCategory.BUILDING_BLOCKS,recipeOutput,ModItems.BROKER_SHARD.get(),ModBlocks.BROKERITE.get());
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModBlocks.RITUAL_BLOCK.get())
                 .pattern("PEP")
@@ -141,6 +141,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(in),has(in))
                 .save(recipeOutput);
         unpacking_recipe(category,recipeOutput,out,in,9);
+    }
+    protected void brick_recipe(RecipeOutput recipeOutput, ItemLike stoneLike, ItemLike brickLike){
+        RecipeCategory category = RecipeCategory.BUILDING_BLOCKS;
+        ShapedRecipeBuilder.shaped(category,brickLike,4)
+                .pattern("##")
+                .pattern("##")
+                .define('#',stoneLike)
+                .unlockedBy(getHasName(stoneLike),has(stoneLike))
+                .save(recipeOutput);
+        stonecutterResultFromBase(recipeOutput,category,brickLike,stoneLike);
     }
 
     protected void unpacking_recipe(RecipeCategory category,RecipeOutput recipeOutput, ItemLike toUnpack, ItemLike result, int amount){

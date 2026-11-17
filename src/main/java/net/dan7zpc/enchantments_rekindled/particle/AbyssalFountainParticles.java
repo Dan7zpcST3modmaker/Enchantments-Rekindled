@@ -15,16 +15,18 @@ import java.util.Random;
 public class AbyssalFountainParticles extends RotatedParticle {
     private SpriteSet spriteSet;
     private double initial_y;
-    protected AbyssalFountainParticles(ClientLevel level, double x, double y, double z, SpriteSet _spriteSet, double xSpeed, double ySpeed, double zSpeed) {
+    private int power;
+    protected AbyssalFountainParticles(ClientLevel level, double x, double y, double z, SpriteSet _spriteSet, double xSpeed, double ySpeed, double zSpeed, int power) {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed);
         this.initial_y = y;
         Random rand = new Random();
-        this.lifetime = 500;
+        this.lifetime = 10;
         //this.gravity = 1;
         this.hasPhysics = false;
         this.friction=0f;
         this.quadSize = 3;
         this.spriteSet = _spriteSet;
+        this.power = power;
         this.setSpriteFromAge(spriteSet);
     }
 
@@ -35,8 +37,9 @@ public class AbyssalFountainParticles extends RotatedParticle {
 
     @Override
     public void render(VertexConsumer buffer, Camera renderInfo, float partialTicks) {
-        float my_size = ((float) (this.lifetime - this.age) /this.lifetime)*3;
-        float size_fluctuation = ((float) Math.sin(this.age)/30);
+        int trueAge = Math.min(power+age,500);
+        float my_size = ((float) (500 - trueAge) /500)*3;
+        float size_fluctuation = ((float) Math.sin(trueAge)/30);
         float remaining_size = Math.max(my_size - size_fluctuation,0f);
         this.quadSize = remaining_size;
         this.setPos(this.x,this.initial_y+(remaining_size),this.z);
@@ -46,7 +49,7 @@ public class AbyssalFountainParticles extends RotatedParticle {
         render_with_y_rotation(buffer,renderInfo,partialTicks,270);
     }
 
-    public static class Provider implements ParticleProvider<SimpleParticleType>{
+    public static class Provider implements ParticleProvider<AbyssalFountainParticleOptions>{
         private final SpriteSet spriteSet;
 
         public Provider(SpriteSet spriteSet) {
@@ -55,8 +58,11 @@ public class AbyssalFountainParticles extends RotatedParticle {
 
         @Nullable
         @Override
-        public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            return new AbyssalFountainParticles(level,x,y,z,spriteSet,0,0,0);
+        public Particle createParticle(AbyssalFountainParticleOptions type, ClientLevel level,
+                                       double x, double y, double z,
+                                       double xSpeed, double ySpeed, double zSpeed) {
+
+            return new AbyssalFountainParticles(level,x,y,z,spriteSet,0,0,0, type.getPower());
         }
     }
 }

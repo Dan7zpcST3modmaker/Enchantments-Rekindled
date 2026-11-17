@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "enchantments_rekindled:enchantments_stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "enchantments_rekindled:enchantments_bricks"
+  }
+}
