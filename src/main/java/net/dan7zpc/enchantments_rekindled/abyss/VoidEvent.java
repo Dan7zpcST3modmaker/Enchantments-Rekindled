@@ -10,9 +10,7 @@ public record VoidEvent(String name, ResourceLocation[] structures) {
         for (ResourceLocation structure : structures) {
             level.getStructureManager().get(structure).ifPresent(template -> {
                 template.placeInWorld(level, position,position, ModVoidEventsSets.default_settings,level.random,3);
-                System.out.println(structure.toString() + " placed");
             });
         }
-        System.out.println(name+" called");
     }
 }
