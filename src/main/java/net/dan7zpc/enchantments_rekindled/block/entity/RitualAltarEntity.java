@@ -150,6 +150,7 @@ public class RitualAltarEntity extends BlockEntity {
             ItemStack stack = new ItemStack((ItemLike) itemsPricedPairs.get(i).object());
             if(stack.is(ModItems.VOID_TRINKET)){
                 stack.set(ModCustomDataTypes.STORED_POSITION, worldPosition.above());
+                stack.set(ModCustomDataTypes.LAST_USED, false);
             }
             drops.addItem(stack);
         }

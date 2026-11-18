@@ -1,5 +1,6 @@
 package net.dan7zpc.enchantments_rekindled.data;
 
+import com.mojang.serialization.Codec;
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentType;
@@ -23,6 +24,11 @@ public class ModCustomDataTypes {
     public static final DataComponentType<Integer> STORED_POWER = register(
             "power_stored",
             builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT)
+    );
+
+    public static final DataComponentType<Boolean> LAST_USED = register(
+            "last_used",
+            builder -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL)
     );
 
     private static <T> DataComponentType<T> register(String name, UnaryOperator<Builder<T>> builder) {

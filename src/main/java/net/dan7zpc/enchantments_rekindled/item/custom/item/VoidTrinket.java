@@ -31,6 +31,7 @@ public class VoidTrinket extends QuickTooltipItem{
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         ResourceLocation dimResourceLocation = level.dimension().location();
         if(dimResourceLocation.toString().equals("enchantments_rekindled:abyss_dim")){
+            if(!last_used(stack)){return;}
             int amount = stack.getOrDefault(ModCustomDataTypes.STORED_POWER,4800);
             stack.set(ModCustomDataTypes.STORED_POWER,amount-1);
             if (amount>1){return;}
@@ -49,14 +50,17 @@ public class VoidTrinket extends QuickTooltipItem{
 
         ResourceLocation dimResourceLocation = level.dimension().location();
         if(dimResourceLocation.toString().equals("enchantments_rekindled:abyss_dim")) {
+            if(!last_used(stack)){return super.use(level,player,usedHand);}
             level.playSound(player, player.blockPosition() , SoundEvents.PLAYER_SWIM, SoundSource.BLOCKS, 1f,1.8f);
             teleportPlayerToDim(player,Level.OVERWORLD,altarPos.getX()+0.5,altarPos.above().getY()+0.5,altarPos.getZ()+0.5);
             setPlayerGamemode(player, GameType.DEFAULT_MODE);
-        }else {
+            set_last_used(stack,false);
+        }else if (is_overworld(level)){
             if(altarPos.distToCenterSqr(player.getX(), player.getY(), player.getZ()) > 100){return InteractionResultHolder.fail(stack);}
             level.playSound(player, player.blockPosition() , SoundEvents.PLAYER_SWIM, SoundSource.BLOCKS, 1f,0.2f);
             teleportPlayerToDim((Entity) player, ResourceKey.create(Registries.DIMENSION,ResourceLocation.parse("enchantments_rekindled:abyss_dim")),player.getX(),216,player.getZ());
             setPlayerGamemode(player,GameType.ADVENTURE);
+            set_last_used(stack,true);
         }
         return super.use(level, player, usedHand);
     }
@@ -82,7 +86,7 @@ public class VoidTrinket extends QuickTooltipItem{
 
     @Override
     public int getBarColor(ItemStack stack) {
-        return ModColors.ABYSSAL_RED;
+        return last_used(stack)? ModColors.ABYSSAL_RED_HIGHLIGHT : ModColors.ABYSSAL_RED;
     }
 
     @Override
@@ -93,6 +97,22 @@ public class VoidTrinket extends QuickTooltipItem{
 
     public int getRemainingPower(ItemStack stack){
         return stack.getOrDefault(ModCustomDataTypes.STORED_POWER,4800);
+    }
+
+    public boolean available(ItemStack stack,Level level){
+        return last_used(stack)||is_overworld(level);
+    }
+
+    private boolean is_overworld(Level level){
+        ResourceLocation dimResourceLocation = level.dimension().location();
+        return Level.OVERWORLD.location() == dimResourceLocation;
+    }
+
+    public boolean last_used(ItemStack stack){
+        return stack.getOrDefault(ModCustomDataTypes.LAST_USED,true);
+    }
+    public void set_last_used(ItemStack stack, boolean bool){
+        stack.set(ModCustomDataTypes.LAST_USED,bool);
     }
 
     @Override
