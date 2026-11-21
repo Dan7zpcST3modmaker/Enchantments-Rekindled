@@ -31,5 +31,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VOIDSTEEL_INGOT.get());
         basicItem(ModItems.VOIDSTEEL_NUGGET.get());
         basicItem(ModItems.VOIDOLITE.get());
+        basicItem(ModItems.GLIMMER_ALLOY_INGOT.get());
     }
 }

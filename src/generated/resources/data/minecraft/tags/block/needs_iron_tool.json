@@ -1,6 +1,8 @@
 {
   "values": [
     "enchantments_rekindled:nycrit_ore",
-    "enchantments_rekindled:deepslate_nycrit_ore"
+    "enchantments_rekindled:deepslate_nycrit_ore",
+    "enchantments_rekindled:nether_glimmer_alloy_ore",
+    "enchantments_rekindled:glimmer_alloy_block"
   ]
 }

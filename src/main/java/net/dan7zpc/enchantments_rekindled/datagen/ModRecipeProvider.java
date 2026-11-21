@@ -99,6 +99,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput);
         brick_recipe(recipeOutput,ModBlocks.ENCHANTMENTS_STONE.get(),ModBlocks.ENCHANTMENTS_BRICKS.get());
         storage_block_2_by_2(RecipeCategory.BUILDING_BLOCKS,recipeOutput,ModItems.BROKER_SHARD.get(),ModBlocks.BROKERITE.get());
+        storage_block_3_by_3(RecipeCategory.MISC,recipeOutput,ModItems.GLIMMER_ALLOY_INGOT.get(),ModBlocks.GLIMMER_ALLOY_BLOCK.get());
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModBlocks.RITUAL_BLOCK.get())
                 .pattern("PEP")
                 .pattern("EGE")

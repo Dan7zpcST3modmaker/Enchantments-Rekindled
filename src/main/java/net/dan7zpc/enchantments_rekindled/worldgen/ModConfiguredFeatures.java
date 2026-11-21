@@ -7,28 +7,37 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
 public class ModConfiguredFeatures {
+    public static final ResourceKey<ConfiguredFeature<?,?>> GLIMMER_ALLOY_ORE_KEY = registerKey("glimmer_alloy_ore");
     public static ResourceKey<ConfiguredFeature<?,?>> NYCRIT_ORE_KEY = registerKey("nycrit_ore");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?,?>> context){
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest netherrackReplaceables = new BlockMatchTest(Blocks.NETHERRACK);
 
         List<OreConfiguration.TargetBlockState> overworldNycritOres = List.of(
                 OreConfiguration.target(stoneReplaceables, ModBlocks.NYCRIT_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, ModBlocks.DEEPSLATE_NYCRIT_ORE.get().defaultBlockState())
         );
 
+        List<OreConfiguration.TargetBlockState> netherGlimmerAlloyOres = List.of(
+                OreConfiguration.target(netherrackReplaceables, ModBlocks.NETHER_GLIMMER_ALLOY_ORE.get().defaultBlockState())
+        );
+
         register(context,NYCRIT_ORE_KEY, Feature.ORE, new OreConfiguration(overworldNycritOres,9));
+        register(context,GLIMMER_ALLOY_ORE_KEY, Feature.ORE, new OreConfiguration(netherGlimmerAlloyOres,2));
     }
 
     public static ResourceKey<ConfiguredFeature<?,?>> registerKey(String name){

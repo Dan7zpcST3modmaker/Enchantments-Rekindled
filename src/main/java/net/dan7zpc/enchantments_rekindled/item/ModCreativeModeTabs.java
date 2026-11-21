@@ -50,7 +50,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.BROKER_STONE);
                         output.accept(ModItems.VOIDOLITE);
                         output.accept(ModItems.ABYSSAL_ESSENCE);
-                        output.accept(ModBlocks.ABYSSAL_BARRIER);
+                        //output.accept(ModBlocks.ABYSSAL_BARRIER);
+                        output.accept(ModItems.GLIMMER_ALLOY_INGOT);
+                        output.accept(ModBlocks.NETHER_GLIMMER_ALLOY_ORE);
+                        output.accept(ModBlocks.GLIMMER_ALLOY_BLOCK);
                     }).build());
 
     public static void register(IEventBus eventBus){

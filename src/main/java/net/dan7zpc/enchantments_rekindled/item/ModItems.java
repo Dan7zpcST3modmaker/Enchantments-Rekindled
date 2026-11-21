@@ -68,7 +68,17 @@ public class ModItems {
             ()-> new QuickTooltipItem(new Item.Properties(),"voidolite","voidolite_shift",""));
     public static final DeferredItem<Item> ABYSSAL_ESSENCE = ITEMS.register("abyssal_essence",
             ()-> new QuickTooltipItem(new Item.Properties(),"abyssal_essence","",""));
+    public static final DeferredItem<Item> GLIMMER_ALLOY_INGOT = ITEMS.register("glimmer_alloy_ingot",
+            ()-> new QuickTooltipItem(new Item.Properties(),"glimmer_alloy_ingot","",""));
 
+    public static final DeferredItem<Item> PROLOGIUM = ITEMS.register("prologium",
+            () -> new CrushRecipeItem(new Item.Properties(),50));
+    public static final DeferredItem<Item> RAW_INTERLUDIUM = ITEMS.register("raw_interludium",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> INTERLUDIUM = ITEMS.register("interludium",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ABYSSINE = ITEMS.register("abyssine",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

@@ -1,0 +1,6 @@
+{
+  "type": "enchantments_rekindled:replace_item",
+  "conditions": [],
+  "target_item": "minecraft:enchanted_book",
+  "replacement_item": "enchantments_rekindled:experiolite"
+}

@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -30,6 +31,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TABLE_OF_KNOWLEDGE.get())
                 .add(ModBlocks.RITUAL_BLOCK.get())
                 .add(ModBlocks.BROKERITE.get())
+                .add(ModBlocks.GLIMMER_ALLOY_BLOCK.get())
+                .add(ModBlocks.NETHER_GLIMMER_ALLOY_ORE.get())
+                .add(ModBlocks.NETHER_BURNER_BLOCK.get())
         ;
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.NYCRIT_BLOCK.get())
@@ -37,6 +41,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.NYCRIT_ORE.get())
                 .add(ModBlocks.DEEPSLATE_NYCRIT_ORE.get())
+                .add(ModBlocks.NETHER_GLIMMER_ALLOY_ORE.get())
+                .add(ModBlocks.GLIMMER_ALLOY_BLOCK.get())
         ;
     }
 }

@@ -55,6 +55,16 @@ public class ModRecipes {
                 }
             });
 
+    public static final DeferredHolder<RecipeSerializer<?>,RecipeSerializer<NetherBurnerRecipe>> NETHER_BURNER_SERIALIZER =
+            SERIALIZERS.register("nether_burner",NetherBurnerRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>,RecipeType<NetherBurnerRecipe>> NETHER_BURNER_TYPE =
+            TYPES.register("nether_burner", () -> new RecipeType<NetherBurnerRecipe>() {
+                @Override
+                public String toString() {
+                    return "nether_burner";
+                }
+            });
+
 
     public static void register(IEventBus eventBus){
         SERIALIZERS.register(eventBus);

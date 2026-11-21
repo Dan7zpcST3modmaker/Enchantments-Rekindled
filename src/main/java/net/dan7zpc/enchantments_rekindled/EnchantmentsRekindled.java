@@ -5,6 +5,7 @@ import net.dan7zpc.enchantments_rekindled.block.entity.ModBlockEntities;
 import net.dan7zpc.enchantments_rekindled.data.ModCustomDataTypes;
 import net.dan7zpc.enchantments_rekindled.item.ModCreativeModeTabs;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
+import net.dan7zpc.enchantments_rekindled.loot.ModLootModifiers;
 import net.dan7zpc.enchantments_rekindled.particle.ModParticles;
 import net.dan7zpc.enchantments_rekindled.recipe.ModRecipes;
 import org.slf4j.Logger;
@@ -41,6 +42,8 @@ public class EnchantmentsRekindled {
 
         ModParticles.register(modEventBus);
         ModCustomDataTypes.register(modEventBus);
+
+        ModLootModifiers.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

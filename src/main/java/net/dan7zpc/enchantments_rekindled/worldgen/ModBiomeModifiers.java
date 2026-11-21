@@ -18,6 +18,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_NYCRIT_ORE = registerKey("add_nycrit_ore");
+    public static final ResourceKey<BiomeModifier> ADD_GLIMMER_ALLOY_ORE = registerKey("add_glimmer_alloy_ore");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -26,6 +27,11 @@ public class ModBiomeModifiers {
         context.register(ADD_NYCRIT_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.NYCRIT_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_GLIMMER_ALLOY_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_NETHER),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.GLIMMER_ALLOY_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
     }
 

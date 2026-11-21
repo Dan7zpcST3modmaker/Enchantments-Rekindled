@@ -16,12 +16,16 @@ import java.util.List;
 
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> NYCRIT_ORE_PLACED_KEY = registerKey("nycrit_ore_placed");
+    public static final ResourceKey<PlacedFeature> GLIMMER_ALLOY_ORE_PLACED_KEY = registerKey("glimmer_alloy_ore_placed");;
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, NYCRIT_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.NYCRIT_ORE_KEY),
                 ModOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(44))));
+
+        register(context, GLIMMER_ALLOY_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.GLIMMER_ALLOY_ORE_KEY),
+                ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(125))));
 
     }
 

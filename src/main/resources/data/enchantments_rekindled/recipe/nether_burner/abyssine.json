@@ -1,0 +1,12 @@
+{
+  "type": "enchantments_rekindled:nether_burner",
+  "input_1": {
+    "id": "enchantments_rekindled:interludium"
+  },
+  "input_2": {
+    "id": "enchantments_rekindled:voidsteel_ingot"
+  },
+  "result": {
+    "id": "enchantments_rekindled:abyssine"
+  }
+}

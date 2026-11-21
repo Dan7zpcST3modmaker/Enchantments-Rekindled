@@ -27,9 +27,12 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.RITUAL_BLOCK.get());
         dropSelf(ModBlocks.BROKER_STONE.get());
         dropSelf(ModBlocks.BROKERITE.get());
+        dropSelf(ModBlocks.GLIMMER_ALLOY_BLOCK.get());
+        dropSelf(ModBlocks.NETHER_BURNER_BLOCK.get());
 
         dropOre(ModBlocks.NYCRIT_ORE.get(),ModItems.NYCRIT.get());
         dropOre(ModBlocks.DEEPSLATE_NYCRIT_ORE.get(),ModItems.NYCRIT.get());
+        dropOre(ModBlocks.NETHER_GLIMMER_ALLOY_ORE.get(), ModItems.GLIMMER_ALLOY_INGOT.get());
     }
 
     protected void dropOre(Block block, Item item){
