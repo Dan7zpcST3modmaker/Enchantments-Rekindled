@@ -15,9 +15,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = EnchantmentsRekindled.MOD_ID)
+//@EventBusSubscriber(modid = EnchantmentsRekindled.MOD_ID)
 public class VillagerTradesFilter {
-    @SubscribeEvent
+    //@SubscribeEvent
     public static void addTrades(VillagerTradesEvent event){
         VillagerProfession type = event.getType();
         if (type.equals(VillagerProfession.LIBRARIAN)) {
