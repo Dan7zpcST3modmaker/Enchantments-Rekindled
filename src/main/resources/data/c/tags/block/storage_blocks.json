@@ -1,5 +1,9 @@
 {
   "values": [
-    "enchantments_rekindled:nycrit_block"
+    "enchantments_rekindled:nycrit_block",
+    "enchantments_rekindled:interludium_block",
+    "enchantments_rekindled:glimmer_alloy_block",
+    "enchantments_rekindled:voidsteel_block",
+    "enchantments_rekindled:abyssine_block"
   ]
 }

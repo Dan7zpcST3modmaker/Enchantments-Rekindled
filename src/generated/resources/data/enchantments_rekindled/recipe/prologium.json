@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "enchantments_rekindled:etherium"
+    },
+    {
+      "item": "enchantments_rekindled:etherium"
+    },
+    {
+      "item": "enchantments_rekindled:etherium"
+    },
+    {
+      "item": "enchantments_rekindled:etherium"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "item": "minecraft:obsidian"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "enchantments_rekindled:prologium"
+  }
+}

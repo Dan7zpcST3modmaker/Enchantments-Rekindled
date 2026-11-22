@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_bars"
+    },
+    "G": {
+      "item": "enchantments_rekindled:glimmer_alloy_ingot"
+    },
+    "M": {
+      "item": "minecraft:magma_block"
+    },
+    "P": {
+      "item": "minecraft:blaze_powder"
+    },
+    "V": {
+      "item": "enchantments_rekindled:voidsteel_ingot"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "#P#",
+    "VMV"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enchantments_rekindled:nether_burner_base"
+  }
+}

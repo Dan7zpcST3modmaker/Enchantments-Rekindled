@@ -1,0 +1,9 @@
+{
+  "type": "enchantments_rekindled:enchantments_pedestal",
+  "ingredient": {
+    "item": "enchantments_rekindled:prologium"
+  },
+  "result": {
+    "id": "enchantments_rekindled:raw_interludium"
+  }
+}

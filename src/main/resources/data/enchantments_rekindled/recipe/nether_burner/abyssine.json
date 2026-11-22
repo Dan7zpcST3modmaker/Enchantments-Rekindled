@@ -1,12 +1,10 @@
 {
   "type": "enchantments_rekindled:nether_burner",
-  "input_1": {
-    "id": "enchantments_rekindled:interludium"
-  },
-  "input_2": {
-    "id": "enchantments_rekindled:voidsteel_ingot"
-  },
+  "ingredients": [
+    {"item": "enchantments_rekindled:interludium_block"},
+    {"item": "enchantments_rekindled:voidsteel_block"}
+  ],
   "result": {
-    "id": "enchantments_rekindled:abyssine"
+    "id": "enchantments_rekindled:abyssine_block"
   }
 }

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "enchantments_rekindled:abyssine_ingot"
+  },
+  "result": {
+    "id": "enchantments_rekindled:abyssine_runic_template",
+    "components": {
+      "minecraft:enchantments": {
+        "enchantments_rekindled:greek/template/t_theta": 1
+      }
+    },
+    "count": 4
+  }
+}

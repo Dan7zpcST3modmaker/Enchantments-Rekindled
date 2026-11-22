@@ -2,6 +2,9 @@
   "values": [
     "enchantments_rekindled:etherium",
     "enchantments_rekindled:proether",
-    "enchantments_rekindled:voidsteel_ingot"
+    "enchantments_rekindled:voidsteel_ingot",
+    "enchantments_rekindled:glimmer_alloy_ingot",
+    "enchantments_rekindled:interludium_ingot",
+    "enchantments_rekindled:abyssine_ingot"
   ]
 }

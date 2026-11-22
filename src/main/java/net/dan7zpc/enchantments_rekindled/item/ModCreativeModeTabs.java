@@ -24,6 +24,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.NYCRIT);
                         output.accept(ModItems.EXPERIENCE_CRYSTAL);
                         output.accept(ModItems.EXPERIOLITE);
+                        output.accept(ModItems.ETHERIUM_RUNIC_TEMPLATE);
+                        output.accept(ModItems.ENCHANTMENT_UPGRADE_TEMPLATE);
                         output.accept(ModItems.EXPERIENCE_PRISM);
                         output.accept(ModBlocks.NYCRIT_BLOCK);
                         output.accept(ModBlocks.NYCRIT_ORE);
@@ -37,23 +39,31 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PROETHER);
                         output.accept(ModItems.ETHERIUM);
                         output.accept(ModBlocks.TABLE_OF_KNOWLEDGE);
-                        output.accept(ModItems.ETHERIUM_RUNIC_TEMPLATE);
                         output.accept(ModBlocks.RITUAL_BLOCK);
                         output.accept(ModItems.VOIDPOWDER);
                         output.accept(ModItems.METAL_SCRAP);
                         output.accept(ModItems.VOIDSTEEL_NUGGET);
                         output.accept(ModItems.VOIDSTEEL_INGOT);
+                        output.accept(ModBlocks.VOIDSTEEL_BLOCK);
                         output.accept(ModItems.BROKER_SHARD);
                         output.accept(ModItems.NOCTETHER);
                         output.accept(ModItems.ABYSSAL_JAM);
                         output.accept(ModItems.VOID_TRINKET);
-                        output.accept(ModBlocks.BROKER_STONE);
+                        output.accept(ModBlocks.BROKERITE);
                         output.accept(ModItems.VOIDOLITE);
+                        output.accept(ModItems.ABYSSINE_RUNIC_TEMPLATE);
                         output.accept(ModItems.ABYSSAL_ESSENCE);
                         //output.accept(ModBlocks.ABYSSAL_BARRIER);
                         output.accept(ModItems.GLIMMER_ALLOY_INGOT);
                         output.accept(ModBlocks.NETHER_GLIMMER_ALLOY_ORE);
                         output.accept(ModBlocks.GLIMMER_ALLOY_BLOCK);
+                        output.accept(ModBlocks.NETHER_BURNER_BLOCK);
+                        output.accept(ModItems.PROLOGIUM);
+                        output.accept(ModItems.RAW_INTERLUDIUM);
+                        output.accept(ModItems.INTERLUDIUM);
+                        output.accept(ModBlocks.INTERLUDIUM_BLOCK);
+                        output.accept(ModItems.ABYSSINE);
+                        output.accept(ModBlocks.ABYSSINE_BLOCK);
                     }).build());
 
     public static void register(IEventBus eventBus){

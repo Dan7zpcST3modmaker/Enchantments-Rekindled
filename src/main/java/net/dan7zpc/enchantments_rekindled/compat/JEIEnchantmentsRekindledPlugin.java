@@ -7,10 +7,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
 import net.dan7zpc.enchantments_rekindled.block.ModBlocks;
-import net.dan7zpc.enchantments_rekindled.recipe.EnchantmentsPedestalRecipe;
-import net.dan7zpc.enchantments_rekindled.recipe.ItemCrushRecipe;
-import net.dan7zpc.enchantments_rekindled.recipe.ModRecipes;
-import net.dan7zpc.enchantments_rekindled.recipe.TableOfKnowledgeRecipe;
+import net.dan7zpc.enchantments_rekindled.recipe.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -34,6 +31,8 @@ public class JEIEnchantmentsRekindledPlugin implements IModPlugin {
                 registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new TableOfKnowledgeCategory(
                 registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new NetherBurnerCategory(
+                registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -55,11 +54,17 @@ public class JEIEnchantmentsRekindledPlugin implements IModPlugin {
         List<TableOfKnowledgeRecipe> tableOfKnowledgeRecipes = recipeManager
                 .getAllRecipesFor(ModRecipes.TABLE_OF_KNOWLEDGE_TYPE.get()).stream().map(RecipeHolder::value).toList();
         registration.addRecipes(TableOfKnowledgeCategory.TABLE_OF_KNOWLEDGE_RECIPE_RECIPE_TYPE, tableOfKnowledgeRecipes);
+
+
+        List<NetherBurnerRecipe> netherBurnerRecipe = recipeManager
+                .getAllRecipesFor(ModRecipes.NETHER_BURNER_TYPE.get()).stream().map(RecipeHolder::value).toList();
+        registration.addRecipes(NetherBurnerCategory.NETHER_BURNER_RECIPE_TYPE, netherBurnerRecipe);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalysts(EnchantmentsPedestalCategory.ENCHANTMENTS_PEDESTAL_RECIPE_TYPE, ModBlocks.ENCHANTMENTS_PEDESTAL);
         registration.addRecipeCatalysts(TableOfKnowledgeCategory.TABLE_OF_KNOWLEDGE_RECIPE_RECIPE_TYPE, ModBlocks.TABLE_OF_KNOWLEDGE);
+        registration.addRecipeCatalysts(NetherBurnerCategory.NETHER_BURNER_RECIPE_TYPE, ModBlocks.NETHER_BURNER_BLOCK);
     }
 }

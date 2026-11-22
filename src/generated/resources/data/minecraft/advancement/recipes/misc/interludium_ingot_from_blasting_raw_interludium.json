@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_interludium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enchantments_rekindled:raw_interludium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:interludium_ingot_from_blasting_raw_interludium"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_interludium"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:interludium_ingot_from_blasting_raw_interludium"
+    ]
+  }
+}

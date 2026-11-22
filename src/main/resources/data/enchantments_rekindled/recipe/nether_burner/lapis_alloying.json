@@ -1,0 +1,14 @@
+{
+  "type": "enchantments_rekindled:nether_burner",
+  "ingredients": [
+    {"item": "enchantments_rekindled:enchantments_stone"},
+    {"item": "enchantments_rekindled:enchantments_stone"},
+    {"item": "enchantments_rekindled:enchantments_stone"},
+    {"item": "enchantments_rekindled:enchantments_stone"},
+    {"item": "enchantments_rekindled:enchantments_stone"},
+    {"item": "enchantments_rekindled:enchantments_stone"}
+  ],
+  "result": {
+    "id": "minecraft:lapis_block"
+  }
+}

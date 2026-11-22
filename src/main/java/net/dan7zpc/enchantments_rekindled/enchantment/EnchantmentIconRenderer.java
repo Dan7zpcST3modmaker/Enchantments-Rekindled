@@ -54,9 +54,14 @@ public class EnchantmentIconRenderer {
 
         for (int i = 0; i < voidbound_stamps.length; i++) {
             ResourceLocation enchantmentKey = ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "greek/" + voidbound_stamps[i]);
+            ResourceLocation enchantmentTemplateKey = ResourceLocation.fromNamespaceAndPath(EnchantmentsRekindled.MOD_ID, "greek/template/t_" + voidbound_stamps[i]);
             ENCHANTMENT_MAP.put(
                     enchantmentKey,
                     ResourceLocation.parse(EnchantmentsRekindled.MOD_ID+ ":textures/gui/enchantments/greek/"+voidbound_stamps[i]+".png")
+            );
+            ENCHANTMENT_MAP.put(
+                    enchantmentTemplateKey,
+                    ResourceLocation.parse(EnchantmentsRekindled.MOD_ID+ ":textures/gui/enchantments/greek/template/"+voidbound_stamps[i]+".png")
             );
         }
     }

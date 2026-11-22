@@ -34,6 +34,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.GLIMMER_ALLOY_BLOCK.get())
                 .add(ModBlocks.NETHER_GLIMMER_ALLOY_ORE.get())
                 .add(ModBlocks.NETHER_BURNER_BLOCK.get())
+                .add(ModBlocks.VOIDSTEEL_BLOCK.get())
+                .add(ModBlocks.INTERLUDIUM_BLOCK.get())
+                .add(ModBlocks.ABYSSINE_BLOCK.get())
         ;
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.NYCRIT_BLOCK.get())

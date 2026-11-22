@@ -68,17 +68,23 @@ public class ModItems {
             ()-> new QuickTooltipItem(new Item.Properties(),"voidolite","voidolite_shift",""));
     public static final DeferredItem<Item> ABYSSAL_ESSENCE = ITEMS.register("abyssal_essence",
             ()-> new QuickTooltipItem(new Item.Properties(),"abyssal_essence","",""));
-    public static final DeferredItem<Item> GLIMMER_ALLOY_INGOT = ITEMS.register("glimmer_alloy_ingot",
-            ()-> new QuickTooltipItem(new Item.Properties(),"glimmer_alloy_ingot","",""));
 
+
+
+    public static final DeferredItem<Item> GLIMMER_ALLOY_INGOT = ITEMS.register("glimmer_alloy_ingot",
+            ()-> new Item(new Item.Properties()));
     public static final DeferredItem<Item> PROLOGIUM = ITEMS.register("prologium",
-            () -> new CrushRecipeItem(new Item.Properties(),50));
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_INTERLUDIUM = ITEMS.register("raw_interludium",
             () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> INTERLUDIUM = ITEMS.register("interludium",
+    public static final DeferredItem<Item> INTERLUDIUM = ITEMS.register("interludium_ingot",
             () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> ABYSSINE = ITEMS.register("abyssine",
+    public static final DeferredItem<Item> ABYSSINE = ITEMS.register("abyssine_ingot",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ENCHANTMENT_UPGRADE_TEMPLATE = ITEMS.register("enchantment_upgrading_template",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ABYSSINE_RUNIC_TEMPLATE = ITEMS.register("abyssine_runic_template",
+            () -> new QuickTooltipItem(new Item.Properties(),"abyssine_runic_template","abyssine_runic_template_shift",""));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

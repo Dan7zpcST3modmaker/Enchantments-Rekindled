@@ -32,5 +32,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VOIDSTEEL_NUGGET.get());
         basicItem(ModItems.VOIDOLITE.get());
         basicItem(ModItems.GLIMMER_ALLOY_INGOT.get());
+        basicItem(ModItems.PROLOGIUM.get());
+        basicItem(ModItems.RAW_INTERLUDIUM.get());
+        basicItem(ModItems.INTERLUDIUM.get());
+        basicItem(ModItems.ABYSSINE.get());
+        basicItem(ModItems.ENCHANTMENT_UPGRADE_TEMPLATE.get());
+        basicItem(ModItems.ABYSSINE_RUNIC_TEMPLATE.get());
     }
 }

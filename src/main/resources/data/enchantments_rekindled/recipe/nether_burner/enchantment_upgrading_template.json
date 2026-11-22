@@ -1,0 +1,11 @@
+{
+  "type": "enchantments_rekindled:nether_burner",
+  "ingredients": [
+    {"item": "enchantments_rekindled:glimmer_alloy_block"},
+    {"item": "enchantments_rekindled:enchantments_stone"},
+    {"item": "enchantments_rekindled:glimmer_alloy_block"}
+  ],
+  "result": {
+    "id": "enchantments_rekindled:enchantment_upgrading_template"
+  }
+}

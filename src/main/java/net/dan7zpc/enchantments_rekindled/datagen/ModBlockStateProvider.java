@@ -25,6 +25,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.BROKERITE);
         blockWithItem(ModBlocks.GLIMMER_ALLOY_BLOCK);
         blockWithItem(ModBlocks.NETHER_GLIMMER_ALLOY_ORE);
+        blockWithItem(ModBlocks.VOIDSTEEL_BLOCK);
+        blockWithItem(ModBlocks.INTERLUDIUM_BLOCK);
+        blockWithItem(ModBlocks.ABYSSINE_BLOCK);
     }
 
     private void blockWithItem (DeferredBlock<?> deferredBlock){

@@ -109,6 +109,12 @@ public class ModBlocks {
                     .noOcclusion()
                     .sound(SoundType.STONE)
             ));
+    public static final DeferredBlock<Block> VOIDSTEEL_BLOCK = registerBlock("voidsteel_block",
+            ()-> new Block(BlockBehaviour.Properties.of()
+                    .strength(4)
+                    .sound(SoundType.NETHERITE_BLOCK)
+                    .requiresCorrectToolForDrops()
+            ));
     public static final DeferredBlock<Block> NETHER_GLIMMER_ALLOY_ORE = registerBlock("nether_glimmer_alloy_ore",
             ()-> new Block(BlockBehaviour.Properties.of()
                     .strength(1)
@@ -121,10 +127,22 @@ public class ModBlocks {
                     .sound(SoundType.NETHERITE_BLOCK)
                     .requiresCorrectToolForDrops()
             ));
+    public static final DeferredBlock<Block> INTERLUDIUM_BLOCK = registerBlock("interludium_block",
+            ()-> new Block(BlockBehaviour.Properties.of()
+                    .strength(4)
+                    .sound(SoundType.NETHERITE_BLOCK)
+                    .requiresCorrectToolForDrops()
+            ));
     public static final DeferredBlock<Block> NETHER_BURNER_BLOCK = registerBlock("nether_burner_base",
             ()-> new NetherBurnerBlock(BlockBehaviour.Properties.of()
                     .strength(1)
                     .sound(SoundType.STONE)
+            ));
+    public static final DeferredBlock<Block> ABYSSINE_BLOCK = registerBlock("abyssine_block",
+            ()-> new Block(BlockBehaviour.Properties.of()
+                    .strength(4)
+                    .sound(SoundType.NETHERITE_BLOCK)
+                    .requiresCorrectToolForDrops()
             ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){

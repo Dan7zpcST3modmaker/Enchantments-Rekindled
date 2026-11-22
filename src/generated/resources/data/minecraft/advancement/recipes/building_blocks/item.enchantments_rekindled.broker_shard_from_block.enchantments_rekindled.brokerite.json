@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brokerite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enchantments_rekindled:brokerite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:item.enchantments_rekindled.broker_shard_from_block.enchantments_rekindled.brokerite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brokerite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:item.enchantments_rekindled.broker_shard_from_block.enchantments_rekindled.brokerite"
+    ]
+  }
+}

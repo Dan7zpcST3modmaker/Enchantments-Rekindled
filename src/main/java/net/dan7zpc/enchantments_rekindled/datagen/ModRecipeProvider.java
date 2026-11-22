@@ -36,6 +36,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         furnace_recipe(recipeOutput, ModItems.METAL_SCRAP.get(),Items.IRON_NUGGET,
                 new FurnaceRecipeType[]{FurnaceRecipeType.Default,FurnaceRecipeType.Blasting},0f);
 
+        furnace_recipe(recipeOutput, ModItems.RAW_INTERLUDIUM.get(),ModItems.INTERLUDIUM,
+                new FurnaceRecipeType[]{FurnaceRecipeType.Default,FurnaceRecipeType.Blasting},0f);
+
         furnace_recipe(recipeOutput, ModItems.RAW_PROETHER.get(),ModItems.PROETHER.get(),
                 new FurnaceRecipeType[]{FurnaceRecipeType.Blasting},0f,400);
 
@@ -45,6 +48,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("D#D")
                 .define('D', Items.DIAMOND)
                 .define('#', ModItems.EXPERIENCE_CRYSTAL.get())
+                .unlockedBy(getHasName(ModItems.EXPERIENCE_CRYSTAL.get()),has(ModItems.EXPERIENCE_CRYSTAL.get()))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModBlocks.NETHER_BURNER_BLOCK.get())
+                .pattern("GGG")
+                .pattern("#P#")
+                .pattern("VMV")
+                .define('#', Items.IRON_BARS)
+                .define('M', Items.MAGMA_BLOCK)
+                .define('P', Items.BLAZE_POWDER)
+                .define('G', ModItems.GLIMMER_ALLOY_INGOT.get())
+                .define('V', ModItems.VOIDSTEEL_INGOT.get())
                 .unlockedBy(getHasName(ModItems.EXPERIENCE_CRYSTAL.get()),has(ModItems.EXPERIENCE_CRYSTAL.get()))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModItems.VOIDOLITE.get())
@@ -57,10 +71,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput);
         storage_block_3_by_3(RecipeCategory.MISC,recipeOutput,ModItems.NYCRIT.get(),ModBlocks.NYCRIT_BLOCK.get());
         storage_block_3_by_3(RecipeCategory.MISC,recipeOutput,ModItems.VOIDSTEEL_NUGGET.get(),ModItems.VOIDSTEEL_INGOT.get());
+        storage_block_3_by_3(RecipeCategory.MISC,recipeOutput,ModItems.VOIDSTEEL_INGOT.get(),ModBlocks.VOIDSTEEL_BLOCK.get());
+        storage_block_3_by_3(RecipeCategory.MISC,recipeOutput,ModItems.INTERLUDIUM.get(),ModBlocks.INTERLUDIUM_BLOCK.get());
+        storage_block_3_by_3(RecipeCategory.MISC,recipeOutput,ModItems.ABYSSINE.get(),ModBlocks.ABYSSINE_BLOCK.get());
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.ARCHETHER.get())
                 .requires(Items.IRON_INGOT,2)
                 .requires(Items.GOLD_INGOT,2)
                 .requires(Items.LAPIS_LAZULI,4)
+                .unlockedBy(getHasName(ModBlocks.NYCRIT_BLOCK.get()),has(ModBlocks.NYCRIT_BLOCK.get()))
+                .save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.PROLOGIUM.get())
+                .requires(ModItems.ETHERIUM,4)
+                .requires(Items.GOLD_BLOCK,2)
+                .requires(Items.OBSIDIAN,2)
                 .unlockedBy(getHasName(ModBlocks.NYCRIT_BLOCK.get()),has(ModBlocks.NYCRIT_BLOCK.get()))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,ModItems.EXPERIENCE_PRISM.get())
@@ -130,7 +153,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("##")
                 .define('#',in)
                 .unlockedBy(getHasName(in),has(in))
-                .save(recipeOutput);
+                .save(recipeOutput,id(out)+"_from_"+id(in));
         unpacking_recipe(category,recipeOutput,out,in,4);
     }
     protected void storage_block_3_by_3(RecipeCategory category,RecipeOutput recipeOutput, ItemLike in, ItemLike out){
@@ -140,7 +163,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("###")
                 .define('#',in)
                 .unlockedBy(getHasName(in),has(in))
-                .save(recipeOutput);
+                .save(recipeOutput,id(out)+"_from_"+id(in));
         unpacking_recipe(category,recipeOutput,out,in,9);
     }
     protected void brick_recipe(RecipeOutput recipeOutput, ItemLike stoneLike, ItemLike brickLike){
@@ -150,7 +173,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("##")
                 .define('#',stoneLike)
                 .unlockedBy(getHasName(stoneLike),has(stoneLike))
-                .save(recipeOutput);
+                .save(recipeOutput,id(brickLike)+"_from_"+id(stoneLike));
         stonecutterResultFromBase(recipeOutput,category,brickLike,stoneLike);
     }
 
@@ -158,7 +181,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(category,result,amount)
                 .requires(toUnpack)
                 .unlockedBy(getHasName(toUnpack),has(toUnpack))
-                .save(recipeOutput);
+                .save(recipeOutput,id(result)+"_from_"+id(toUnpack));
+    }
+
+    private String id(ItemLike itemLike){
+        return itemLike.asItem().getName(new ItemStack(itemLike)).getString();
     }
 
     protected void furnace_recipe(RecipeOutput recipeOutput, ItemLike in, ItemLike out, FurnaceRecipeType[] furnaceRecipeTypes,float experience,int cooking_time){

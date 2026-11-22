@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "enchantments_rekindled:abyssine_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "enchantments_rekindled:abyssine_ingot"
+  }
+}

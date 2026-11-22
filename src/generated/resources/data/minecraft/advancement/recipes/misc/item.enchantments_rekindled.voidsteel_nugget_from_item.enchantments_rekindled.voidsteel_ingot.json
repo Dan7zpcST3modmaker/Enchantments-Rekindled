@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:item.enchantments_rekindled.voidsteel_nugget_from_item.enchantments_rekindled.voidsteel_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_voidsteel_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enchantments_rekindled:voidsteel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_voidsteel_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:item.enchantments_rekindled.voidsteel_nugget_from_item.enchantments_rekindled.voidsteel_ingot"
+    ]
+  }
+}
