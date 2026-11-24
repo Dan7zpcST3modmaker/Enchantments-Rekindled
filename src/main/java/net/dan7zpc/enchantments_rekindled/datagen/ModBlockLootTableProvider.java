@@ -32,6 +32,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.VOIDSTEEL_BLOCK.get());
         dropSelf(ModBlocks.INTERLUDIUM_BLOCK.get());
         dropSelf(ModBlocks.ABYSSINE_BLOCK.get());
+        dropSelf(ModBlocks.SLAG_BLOCK.get());
 
         dropOre(ModBlocks.NYCRIT_ORE.get(),ModItems.NYCRIT.get());
         dropOre(ModBlocks.DEEPSLATE_NYCRIT_ORE.get(),ModItems.NYCRIT.get());

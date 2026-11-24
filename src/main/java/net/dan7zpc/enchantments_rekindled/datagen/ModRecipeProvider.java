@@ -30,6 +30,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
+
         furnace_recipe(recipeOutput, ModItems.NYCRIT.get(),ModItems.EXPERIENCE_CRYSTAL.get(),
                 new FurnaceRecipeType[]{FurnaceRecipeType.Default,FurnaceRecipeType.Blasting},0f);
 
@@ -135,6 +136,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         //stonecutterResultFromBase(recipeOutput,RecipeCategory.BUILDING_BLOCKS,ModBlocks.RITUAL_BLOCK.get(),Items.GOLD_BLOCK);
     }
+
 
     protected void furnace_recipe(RecipeOutput recipeOutput, ItemLike in, ItemLike out, FurnaceRecipeType[] furnaceRecipeTypes){
         furnace_recipe(recipeOutput,in,out,furnaceRecipeTypes,0.25f,200);

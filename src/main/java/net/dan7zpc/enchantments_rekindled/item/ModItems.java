@@ -82,7 +82,7 @@ public class ModItems {
     public static final DeferredItem<Item> ABYSSINE = ITEMS.register("abyssine_ingot",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> ENCHANTMENT_UPGRADE_TEMPLATE = ITEMS.register("enchantment_upgrading_template",
-            () -> new Item(new Item.Properties()));
+            () -> new QuickTooltipItem(new Item.Properties(),"enchantment_upgrading_template","enchantment_upgrading_template_shift",""));
     public static final DeferredItem<Item> ABYSSINE_RUNIC_TEMPLATE = ITEMS.register("abyssine_runic_template",
             () -> new QuickTooltipItem(new Item.Properties(),"abyssine_runic_template","abyssine_runic_template_shift",""));
 

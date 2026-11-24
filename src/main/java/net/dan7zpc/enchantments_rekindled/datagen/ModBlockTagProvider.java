@@ -38,6 +38,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.INTERLUDIUM_BLOCK.get())
                 .add(ModBlocks.ABYSSINE_BLOCK.get())
         ;
+        tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(ModBlocks.SLAG_BLOCK.get())
+        ;
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.NYCRIT_BLOCK.get())
         ;

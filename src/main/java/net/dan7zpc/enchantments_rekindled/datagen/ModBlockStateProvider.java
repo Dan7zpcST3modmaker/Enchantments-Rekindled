@@ -28,6 +28,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.VOIDSTEEL_BLOCK);
         blockWithItem(ModBlocks.INTERLUDIUM_BLOCK);
         blockWithItem(ModBlocks.ABYSSINE_BLOCK);
+        blockWithItem(ModBlocks.SLAG_BLOCK);
     }
 
     private void blockWithItem (DeferredBlock<?> deferredBlock){

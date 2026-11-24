@@ -1,11 +1,14 @@
 package net.dan7zpc.enchantments_rekindled.block.entity;
 
+import net.dan7zpc.enchantments_rekindled.block.ModBlocks;
 import net.dan7zpc.enchantments_rekindled.recipe.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
@@ -80,7 +83,10 @@ public class NetherBurnerBlockEntity extends SynchronizedBlockEntity{
         for (int i = 0; i < size; i++) {
             pos = pos.above();
             assert level != null;
-            level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+            level.setBlockAndUpdate(pos, ModBlocks.SLAG_BLOCK.get().defaultBlockState());
+            if(level instanceof ServerLevel serverLevel){
+                serverLevel.sendParticles(ParticleTypes.ASH,pos.getX()+0.5,pos.getY()+0.5,pos.getZ()+0.5,10,0.5,0.5,0.5,0.1);
+            }
         }
     }
 

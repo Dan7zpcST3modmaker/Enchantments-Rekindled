@@ -21,7 +21,7 @@
   "item.enchantments_rekindled.voidolite": "Войдолит",
   "item.enchantments_rekindled.abyssal_essence": "Эссенция бездны",
   "item.enchantments_rekindled.glimmer_alloy_ingot": "Слиток перламутрового сплава",
-  "item.enchantments_rekindled.prologium": "Слиток прологиума",
+  "item.enchantments_rekindled.prologium": "Прологиум",
   "item.enchantments_rekindled.raw_interludium": "Сырой антрактиум",
   "item.enchantments_rekindled.interludium_ingot": "Слиток антрактиума",
   "item.enchantments_rekindled.abyssine_ingot": "Слиток бездалина",
@@ -29,6 +29,7 @@
   "item.enchantments_rekindled.abyssine_runic_template": "Рунный шаблон бездны",
 
   "block.enchantments_rekindled.nycrit_block": "Блок никрита",
+  "block.enchantments_rekindled.slag": "Шлак",
   "block.enchantments_rekindled.nycrit_ore": "Никритовая руда",
   "block.enchantments_rekindled.deepslate_nycrit_ore": "Никритоносная глубинносланцевая руда",
   "block.enchantments_rekindled.abyssal_barrier": "Барьер бездны",
@@ -70,6 +71,7 @@
   "tooltip.enchantments_rekindled.hold_control": "Удреживайте §7[Control]§r для дополнительных сведеней",
   "tooltip.enchantments_rekindled.etherium_runic_template_shift": "Когда лежит на §aпьедестале зачарований§r любой соседний §aпьедестал зачарований§r §5гарантированно§r закуёт такую же §aпечать опыта§r, как и та что на шаблоне, расходуя при этом шаблон",
   "tooltip.enchantments_rekindled.abyssine_runic_template_shift": "Когда лежит на §aпьедестале зачарований§r любой соседний §aпьедестал зачарований§r §5гарантированно§r закуёт такую же §aпечать бездны§r, как и та что на шаблоне, расходуя при этом шаблон",
+  "tooltip.enchantments_rekindled.enchantment_upgrading_template_shift": "Когда лежит на §aпьедестале зачарований§r любой соседний §aпьедестал зачарований§r увеличит уровень книги зачарований, лежащей на нём, расходуя при этом шаблон. Шанс улучшения книги уменьшается с каждым уровнем",
   "tooltip.enchantments_rekindled.abyssal_essence": "Нажмите ПКМ на основание §cфонтана бездны§r §fбутылочкой§r чтобы получить этот предмет",
   "tooltip.enchantments_rekindled.void_trinket": "Нажмите ПКМ, находясь рядом с §cалтарём§r, на котором получили этот артефакт, чтобы попасть в §cбездну§r. Нажмите ПКМ ещё раз чтобы вернуться",
 

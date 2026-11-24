@@ -144,6 +144,12 @@ public class ModBlocks {
                     .sound(SoundType.NETHERITE_BLOCK)
                     .requiresCorrectToolForDrops()
             ));
+    public static final DeferredBlock<Block> SLAG_BLOCK = registerBlock("slag",
+            ()-> new Block(BlockBehaviour.Properties.of()
+                    .strength(4)
+                    .sound(SoundType.NETHER_WART)
+                    .requiresCorrectToolForDrops()
+            ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){
         DeferredBlock<T> toReturn = BLOCKS.register(name,block);

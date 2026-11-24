@@ -21,7 +21,7 @@
   "item.enchantments_rekindled.voidolite": "Voidolite",
   "item.enchantments_rekindled.abyssal_essence": "Abyssal Essence",
   "item.enchantments_rekindled.glimmer_alloy_ingot": "Glimmer Alloy Ingot",
-  "item.enchantments_rekindled.prologium": "Prologium Ingot",
+  "item.enchantments_rekindled.prologium": "Prologium",
   "item.enchantments_rekindled.raw_interludium": "Raw Interludium",
   "item.enchantments_rekindled.interludium_ingot": "Interludium Ingot",
   "item.enchantments_rekindled.abyssine_ingot": "Abyssine Ingot",
@@ -29,6 +29,7 @@
   "item.enchantments_rekindled.abyssine_runic_template": "Abyssine Runic Template",
 
   "block.enchantments_rekindled.nycrit_block": "Nycrit Block",
+  "block.enchantments_rekindled.slag": "Slag",
   "block.enchantments_rekindled.nycrit_ore": "Nycrit Ore",
   "block.enchantments_rekindled.deepslate_nycrit_ore": "Deepslate Nycrit Ore",
   "block.enchantments_rekindled.abyssal_barrier": "Abyssal Barrier",
@@ -70,8 +71,10 @@
   "tooltip.enchantments_rekindled.hold_control": "Hold §7[Control]§r for more Info",
   "tooltip.enchantments_rekindled.etherium_runic_template": "",
   "tooltip.enchantments_rekindled.abyssine_runic_template": "",
+  "tooltip.enchantments_rekindled.enchantment_upgrading_template": "",
   "tooltip.enchantments_rekindled.etherium_runic_template_shift": "When lies on the §aEnchantments Pedestal§r any other §aEnchantments Pedestal§r next to it will be §5guaranteed§r to affix same §aStamp§r as the one on the template and will consume it upon affixing",
   "tooltip.enchantments_rekindled.abyssine_runic_template_shift": "When lies on the §aEnchantments Pedestal§r any other §aEnchantments Pedestal§r next to it will be §5guaranteed§r to affix same §aStamp§r as the one on the template and will consume it upon affixing",
+  "tooltip.enchantments_rekindled.enchantment_upgrading_template_shift": "When lies on the §aEnchantments Pedestal§r any other §aEnchantments Pedestal§r next to it will upgrade an Enchanted Book on it and will consume it upon affixing. Chance of upgrading the book will decrease with every level",
   "tooltip.enchantments_rekindled.abyssal_essence": "Right-click §cAbyssal Fountain§r at the bottom with a §fGlass Bottle§r to get this stuff",
   "tooltip.enchantments_rekindled.void_trinket": "Right-click while standing close to the §cAltar§r you got it from to teleport into §cThe Abyss§r, right-click again to teleport back",
 

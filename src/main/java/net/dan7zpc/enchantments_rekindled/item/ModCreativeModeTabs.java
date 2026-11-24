@@ -64,6 +64,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.INTERLUDIUM_BLOCK);
                         output.accept(ModItems.ABYSSINE);
                         output.accept(ModBlocks.ABYSSINE_BLOCK);
+                        output.accept(ModBlocks.SLAG_BLOCK);
                     }).build());
 
     public static void register(IEventBus eventBus){

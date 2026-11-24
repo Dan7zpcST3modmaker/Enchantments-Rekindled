@@ -1,6 +1,5 @@
 package net.dan7zpc.enchantments_rekindled.block.entity;
 
-import net.dan7zpc.enchantments_rekindled.EnchantmentsRekindled;
 import net.dan7zpc.enchantments_rekindled.block.ModBlocks;
 import net.dan7zpc.enchantments_rekindled.item.ModItemTagProvider;
 import net.dan7zpc.enchantments_rekindled.item.ModItems;
@@ -15,26 +14,20 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +73,14 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
 
     private void craft() {
         ItemStack stack = inventory.getStackInSlot(0);
-        ItemStack result = enchantable(stack)? enchanterCraft():infuserCraft();
+        ItemStack result;
+        if(enchantable(stack)){
+            result = enchanterCraft();
+        } else if (stack.is(Items.ENCHANTED_BOOK)) {
+            result = upgraderCraft();
+        }else {
+            result = infuserCraft();
+        }
         this.clearContents();
         this.inventory.insertItem(0,result,false);
         level.playSound(level.getNearestPlayer(
@@ -88,6 +88,23 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
                 15,true
         ),worldPosition, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f,1f);
         this.notifyUpdate();
+    }
+
+    private ItemStack upgraderCraft() {
+        ItemStack stack = this.inventory.getStackInSlot(0);
+        ItemStack newStack = new ItemStack(stack.getItem());
+        ItemEnchantments enchantments = stack.get(DataComponents.STORED_ENCHANTMENTS);
+        Holder<Enchantment> enchantment = enchantments.keySet().iterator().next();
+        int lvl = enchantments.getLevel(enchantment);
+        ItemEnchantments.Mutable new_enchantments = new ItemEnchantments.Mutable(
+                newStack.getOrDefault(DataComponents.STORED_ENCHANTMENTS, ItemEnchantments.EMPTY)
+        );
+        new_enchantments.set(enchantment,lvl+1);
+        spendUpgradeTemplate();
+        float chance = (float) 100 /lvl;
+        newStack.set(DataComponents.STORED_ENCHANTMENTS,new_enchantments.toImmutable());
+        assert level != null;
+        return (level.getRandom().nextIntBetweenInclusive(0,100)<=chance)?newStack:stack;
     }
 
     private ItemStack infuserCraft(){
@@ -127,13 +144,28 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
     }
 
     private void spendVoidEssence(){
-        if (getVoidEssence(this.worldPosition.north())) {drainEssenceFrom(this.worldPosition.north());return;}
-        if (getVoidEssence(this.worldPosition.west())) {drainEssenceFrom(this.worldPosition.west());return;}
-        if (getVoidEssence(this.worldPosition.east())) {drainEssenceFrom(this.worldPosition.east());return;}
-        if (getVoidEssence(this.worldPosition.south())) {drainEssenceFrom(this.worldPosition.south());return;}
+        if (getVoidEssence(this.worldPosition.north())) {
+            drainFrom(this.worldPosition.north());return;}
+        if (getVoidEssence(this.worldPosition.west())) {
+            drainFrom(this.worldPosition.west());return;}
+        if (getVoidEssence(this.worldPosition.east())) {
+            drainFrom(this.worldPosition.east());return;}
+        if (getVoidEssence(this.worldPosition.south())) {
+            drainFrom(this.worldPosition.south());return;}
     }
 
-    private void drainEssenceFrom(BlockPos pos){
+    private void spendUpgradeTemplate(){
+        if (getUpgradeTemplate(this.worldPosition.north())) {
+            drainFrom(this.worldPosition.north());return;}
+        if (getUpgradeTemplate(this.worldPosition.west())) {
+            drainFrom(this.worldPosition.west());return;}
+        if (getUpgradeTemplate(this.worldPosition.east())) {
+            drainFrom(this.worldPosition.east());return;}
+        if (getUpgradeTemplate(this.worldPosition.south())) {
+            drainFrom(this.worldPosition.south());return;}
+    }
+
+    private void drainFrom(BlockPos pos){
         BlockEntity blockEntity = level.getBlockEntity(pos);
         BaseContainerBlockEntity  baseContainerBlockEntity = (BaseContainerBlockEntity) blockEntity;
         ItemStack stack = baseContainerBlockEntity.getItem(0);
@@ -174,12 +206,20 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
     }
 
     private Boolean getVoidEssence(BlockPos pos){
+        return getHasItem(pos,ModItems.ABYSSAL_ESSENCE.get());
+    }
+
+    private Boolean getUpgradeTemplate(BlockPos pos){
+        return getHasItem(pos,ModItems.ENCHANTMENT_UPGRADE_TEMPLATE.get());
+    }
+    
+    private boolean getHasItem(BlockPos pos, Item item){
         if (!isPedestal(pos)) return false;
         assert level != null;
         BlockEntity blockEntity = level.getBlockEntity(pos);
         BaseContainerBlockEntity  baseContainerBlockEntity = (BaseContainerBlockEntity) blockEntity;
         ItemStack stack = baseContainerBlockEntity.getItem(0);
-        return stack.getItem() == ModItems.ABYSSAL_ESSENCE.get();
+        return stack.getItem() == item;
     }
 
 
@@ -282,11 +322,33 @@ public class EnchantmentsPedestalEntity extends PedestalEntity {
             boolean stamp_holder = item.is(ModItemTagProvider.EXPERIENCE_STAMP_HOLDERS);
             boolean voidolite = item.is(ModItems.VOIDOLITE);
             if(voidolite && !hasVoidEssence()){return false;}
-            if(enchanted || !stamp_holder){return false;}
+            if(enchanted || !stamp_holder){return canUpgradeBook();}
             return true;
         }
         ItemStack output = recipe.get().value().outputItem();
         return true;
+    }
+
+    private boolean canUpgradeBook() {
+        ItemStack stack = this.inventory.getStackInSlot(0);
+        if(!stack.is(Items.ENCHANTED_BOOK))return false;
+        ItemEnchantments enchantments = stack.get(DataComponents.STORED_ENCHANTMENTS);
+        if(enchantments==null||enchantments.isEmpty())return false;
+        if(enchantments.size() != 1) return false;
+        Holder<Enchantment> enchantment = enchantments.keySet().iterator().next();
+        int max_lvl = enchantment.value().getMaxLevel();
+        int lvl = enchantments.getLevel(enchantment);
+        if(lvl >= max_lvl) return false;
+        if(!hasUpgradingTemplate()) return false;
+        return true;
+    }
+
+    private boolean hasUpgradingTemplate() {
+        boolean toReturn = getUpgradeTemplate(this.worldPosition.north());
+        toReturn |= getUpgradeTemplate(this.worldPosition.west());
+        toReturn |= getUpgradeTemplate(this.worldPosition.east());
+        toReturn |= getUpgradeTemplate(this.worldPosition.south());
+        return toReturn;
     }
 
     private Optional<RecipeHolder<EnchantmentsPedestalRecipe>> getCurrentRecipe() {

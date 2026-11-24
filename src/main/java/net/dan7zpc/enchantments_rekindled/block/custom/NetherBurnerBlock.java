@@ -94,9 +94,10 @@ public class NetherBurnerBlock extends BaseEntityBlock {
         if(stack.is(ModItemTagProvider.NETHER_BURNER_FUEL)){
             if(!burnerBlockEntity.hasRecipe(burnerBlockEntity.getCurrentRecipe())){return ItemInteractionResult.SUCCESS;}
             if(level.isClientSide()) {
-                level.playSound(player, pos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1f, 0.3f);
+                //level.playSound(player, pos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1f, 0.3f);
                 return ItemInteractionResult.SUCCESS;
             }
+            level.playLocalSound(pos,SoundEvents.FIRECHARGE_USE,SoundSource.BLOCKS,1f,0.3f,false);
             burnerBlockEntity.tryCraft(level,pos,state);
             stack.shrink(1);
             burnerBlockEntity.notifyUpdate();
